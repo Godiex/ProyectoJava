@@ -94,7 +94,6 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
         });
         jPanel1.add(btonRegistrarAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 220, 30));
 
-<<<<<<< HEAD
         BtnSalir.setText("Salir");
         BtnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +101,6 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 660, -1, -1));
-=======
         btonGestionarIngeniero.setBackground(new java.awt.Color(45, 64, 89));
         btonGestionarIngeniero.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         btonGestionarIngeniero.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,7 +112,6 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btonGestionarIngeniero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 220, 30));
->>>>>>> 429c7ab79166dc2dec999b7c59f59249505823aa
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 710));
 
@@ -152,15 +149,12 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
         AbrirPanel(new RegistroUsuarioIngenieroForm());
     }//GEN-LAST:event_btonRegistrarAdministradorActionPerformed
 
-<<<<<<< HEAD
     private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
         AbrirFormulario(new LoginForm());
     }//GEN-LAST:event_BtnSalirActionPerformed
-=======
     private void btonGestionarIngenieroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btonGestionarIngenieroActionPerformed
         this.AbrirPanel(new GestionarIngeniero());
     }//GEN-LAST:event_btonGestionarIngenieroActionPerformed
->>>>>>> 429c7ab79166dc2dec999b7c59f59249505823aa
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnSalir;

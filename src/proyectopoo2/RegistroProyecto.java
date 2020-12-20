@@ -6,6 +6,7 @@ import javax.swing.JComponent;
 import Clases.*;
 import Logica.*;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class RegistroProyecto extends javax.swing.JInternalFrame {
     Proyecto proyecto = new Proyecto("");
@@ -13,6 +14,7 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
     Ingeniero ingeniero;
     private JComponent Barra = ((javax.swing.plaf.basic.BasicInternalFrameUI)getUI()).getNorthPane();
     private Dimension dimBarra = null;
+    DefaultTableModel modeloTabla;
     
     public void ocultarBarraTitulo()
     {
@@ -25,6 +27,7 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
     public RegistroProyecto() {
         initComponents();
         this.ocultarBarraTitulo();
+        this.CrearModeloDeTabla();
     }
 
     @SuppressWarnings("unchecked")
@@ -40,7 +43,7 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
         LbTipoContrato6 = new javax.swing.JLabel();
         TfFechaInicio = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaEstudiantes = new javax.swing.JTable();
+        Ttarea = new javax.swing.JTable();
         LbPropuesta2 = new javax.swing.JLabel();
         TfDuracionTarea = new javax.swing.JTextField();
         LbTipoContrato2 = new javax.swing.JLabel();
@@ -73,7 +76,7 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
         LbTipoContrato11 = new javax.swing.JLabel();
         TfFechaInicioTarea = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
-        jButton3 = new javax.swing.JButton();
+        BtnAgregarTarea = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
         LbTipoContrato4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -102,7 +105,7 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
                 TfFechaLimiteActionPerformed(evt);
             }
         });
-        getContentPane().add(TfFechaLimite, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 420, 166, 30));
+        getContentPane().add(TfFechaLimite, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 430, 166, 30));
 
         TfNombreProyecto.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
         getContentPane().add(TfNombreProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 350, -1));
@@ -113,11 +116,11 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
 
         LbTipoContrato5.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato5.setText("Fecha Limite");
-        getContentPane().add(LbTipoContrato5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 390, 166, -1));
+        getContentPane().add(LbTipoContrato5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, 166, -1));
 
         LbTipoContrato6.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato6.setText("Fecha de Inicio");
-        getContentPane().add(LbTipoContrato6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, 166, -1));
+        getContentPane().add(LbTipoContrato6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 166, -1));
 
         TfFechaInicio.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         TfFechaInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -125,10 +128,10 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
                 TfFechaInicioActionPerformed(evt);
             }
         });
-        getContentPane().add(TfFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 166, 30));
+        getContentPane().add(TfFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, 166, 30));
 
-        TablaEstudiantes.setFont(new java.awt.Font("Century Schoolbook", 0, 11)); // NOI18N
-        TablaEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
+        Ttarea.setFont(new java.awt.Font("Century Schoolbook", 0, 11)); // NOI18N
+        Ttarea.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -139,9 +142,9 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(TablaEstudiantes);
+        jScrollPane1.setViewportView(Ttarea);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, -1, 100));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, 540, 100));
 
         LbPropuesta2.setFont(new java.awt.Font("Century", 1, 20)); // NOI18N
         LbPropuesta2.setText("Tareas :");
@@ -171,7 +174,7 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
 
         LbTipoContrato3.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato3.setText("Tareas :");
-        getContentPane().add(LbTipoContrato3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 130, -1));
+        getContentPane().add(LbTipoContrato3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 130, -1));
 
         LbTipoContrato8.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato8.setText("Fase del Proyecto :");
@@ -195,16 +198,16 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
                 BtnCalcularFechaTareaActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnCalcularFechaTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 120, 30));
+        getContentPane().add(BtnCalcularFechaTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 120, 30));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 10, 610));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 10, 610));
 
         LbTipoContrato9.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato9.setText("Nombre Tarea :");
         getContentPane().add(LbTipoContrato9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 130, -1));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1000, 10));
-        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 520, 10));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 590, 10));
 
         LbContraseña.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbContraseña.setText("Apellidos :");
@@ -287,15 +290,15 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
                 TfFechaLimiteTareaActionPerformed(evt);
             }
         });
-        getContentPane().add(TfFechaLimiteTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 110, 166, 30));
+        getContentPane().add(TfFechaLimiteTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, 166, 30));
 
         LbTipoContrato10.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato10.setText("Fecha Limite Tarea :");
-        getContentPane().add(LbTipoContrato10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 166, -1));
+        getContentPane().add(LbTipoContrato10, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, 166, -1));
 
         LbTipoContrato11.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato11.setText("Fecha de Inicio Tarea :");
-        getContentPane().add(LbTipoContrato11, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 166, -1));
+        getContentPane().add(LbTipoContrato11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 166, -1));
 
         TfFechaInicioTarea.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         TfFechaInicioTarea.addActionListener(new java.awt.event.ActionListener() {
@@ -303,17 +306,17 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
                 TfFechaInicioTareaActionPerformed(evt);
             }
         });
-        getContentPane().add(TfFechaInicioTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 166, 30));
-        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 490, 10));
+        getContentPane().add(TfFechaInicioTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 166, 30));
+        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 410, 10));
 
-        jButton3.setText("Agregar Tarea ");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BtnAgregarTarea.setText("Agregar Tarea ");
+        BtnAgregarTarea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BtnAgregarTareaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, 160, 30));
-        getContentPane().add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 490, 10));
+        getContentPane().add(BtnAgregarTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 160, 30));
+        getContentPane().add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 410, 10));
 
         LbTipoContrato4.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato4.setText("Tipo de Tarea :");
@@ -384,12 +387,13 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
         MostrarFechaCalculadaTarea();
     }//GEN-LAST:event_BtnCalcularFechaTareaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void BtnAgregarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarTareaActionPerformed
+        AgregarTarea();
+    }//GEN-LAST:event_BtnAgregarTareaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnAgregarTarea;
     private javax.swing.JButton BtnCalcularFechaTarea;
     private javax.swing.JButton BtnEnviarPostulacion;
     private javax.swing.JComboBox<String> CmbFase;
@@ -414,7 +418,6 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel LbTipoContrato8;
     private javax.swing.JLabel LbTipoContrato9;
     private javax.swing.JTextArea TaDescripcionTarea;
-    private javax.swing.JTable TablaEstudiantes;
     private javax.swing.JTextField TfApellidos;
     private javax.swing.JTextField TfCedula;
     private javax.swing.JTextField TfDuracionTarea;
@@ -427,8 +430,8 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TfNombre;
     private javax.swing.JTextField TfNombreProyecto;
     private javax.swing.JTextField TfNombreTarea;
+    private javax.swing.JTable Ttarea;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabelTitulo2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -439,7 +442,53 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator6;
     // End of variables declaration//GEN-END:variables
 
+    
+    public void CrearModeloDeTabla ()
+    {
+        modeloTabla= new DefaultTableModel();
+        modeloTabla.addColumn("nombre");
+        modeloTabla.addColumn("tipo");
+        modeloTabla.addColumn("Fase");
+        modeloTabla.addColumn("Duracion");
+        modeloTabla.addColumn("Fecha Inicio");
+        modeloTabla.addColumn("Fecha Final");
+        this.Ttarea.setModel(modeloTabla);
+    }
+    public void Insertar (Tarea tarea)
+    {
+        if (tarea != null) {
+            InsertarFila(tarea);
+        }
+    }
+    public void InsertarFila (Tarea tarea)
+    {
+        String [] datos =  new String[6];
+        datos[0] = tarea.getNombre();
+        datos[1] = tarea.getTipoTarea();
+        datos[2] = tarea.getFaseProyecto();
+        datos[3] = String.valueOf(tarea.getDuracion());
+        datos[4] = tarea.ObtenerFecharCorta(tarea.getFechaInicio());
+        datos[5] = tarea.ObtenerFecharCorta(tarea.getFechaLimite());
+        modeloTabla.addRow(datos);
+    }
 
+    public void AgregarTarea()
+    {
+        try {
+            Tarea tarea = this.CrearTarea();
+            tarea.CalcularFechaFinal();
+            if(tarea != null)
+            {
+                this.Insertar(tarea);
+                this.tareas.add(tarea);
+                proyecto.addTarea(tarea);
+                this.MostrarFechaCalculadaProyecto();
+            }
+        } catch (Exception e) {
+            Mensaje.MostrarNotificacion(e.getMessage());
+        }
+    }
+   
     public void CrearProyecto()
     {
         String nombreProyecto = TfNombreProyecto.getText();
@@ -450,9 +499,9 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
     public void MostrarFechaCalculadaProyecto()
     {
         try {
-
+            proyecto.CalcularFechaFinal();
             String fechaInicio = proyecto.ObtenerFecharCorta(proyecto.getFechaInicio());
-            String fechaFinal = proyecto.ObtenerFecharCorta(proyecto.getFechaEntrega());
+            String fechaFinal = proyecto.ObtenerFecharCorta(proyecto.getFechaLimite());
             TfFechaInicio.setText(fechaInicio);
             TfFechaLimite.setText(fechaFinal);
         } catch (Exception e) {
@@ -511,14 +560,5 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
         }
         return tarea;
     }
-    public void AgregarTarea()
-    {
-        try {
-            Tarea t = CrearTarea();
-            t.CalcularFechaFinal();
-            tareas.add(t);
-        } catch (Exception e) {
-            Mensaje.MostrarNotificacion(e.getMessage());
-        }
-    }
+    
 }

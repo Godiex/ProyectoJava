@@ -148,7 +148,6 @@
             </Constraint>
           </Constraints>
         </Component>
-<<<<<<< HEAD
         <Component class="javax.swing.JButton" name="BtnSalir">
           <Properties>
             <Property name="text" type="java.lang.String" value="Salir"/>
@@ -159,7 +158,6 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="150" y="660" width="-1" height="-1"/>
-=======
         <Component class="javax.swing.JButton" name="btonGestionarIngeniero">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -182,7 +180,6 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="0" y="260" width="220" height="30"/>
->>>>>>> 429c7ab79166dc2dec999b7c59f59249505823aa
             </Constraint>
           </Constraints>
         </Component>
