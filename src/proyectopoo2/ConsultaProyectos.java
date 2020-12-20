@@ -33,15 +33,19 @@ public class ConsultaProyectos extends javax.swing.JInternalFrame {
         this.ocultarBarraTitulo();
         respuesta = new Respuesta(new ListaProyecto());
         this.ConsultarProyectos();
-        this.CrearModeloDeTabla();
-        this.Insertar();
+        
     }
 
     private void ConsultarProyectos() {
         respuesta = sProyecto.ConsultarProyectosEnDesarrollo();
         if (respuesta.isError()) {
             Mensaje.MostrarNotificacion(respuesta.getMensaje());
-        } 
+        }
+        else
+        {
+            this.CrearModeloDeTabla();
+            this.Insertar();
+        }
     }
 
     public void CrearModeloDeTabla() {

@@ -37,6 +37,7 @@ public class PrincipalAdmistrador extends javax.swing.JFrame {
         BtnGestionarIngeniero = new javax.swing.JButton();
         BtnConsultarProyectos = new javax.swing.JButton();
         BtnSalir = new javax.swing.JButton();
+        BtnConsultarProyectosPorIngeniero = new javax.swing.JButton();
         escritorio = new javax.swing.JDesktopPane();
 
         jButton4.setText("jButton4");
@@ -117,7 +118,7 @@ public class PrincipalAdmistrador extends javax.swing.JFrame {
                 BtnConsultarProyectosActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnConsultarProyectos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 220, 30));
+        jPanel1.add(BtnConsultarProyectos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 220, 30));
 
         BtnSalir.setText("Salir");
         BtnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +127,18 @@ public class PrincipalAdmistrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 650, 60, -1));
+
+        BtnConsultarProyectosPorIngeniero.setBackground(new java.awt.Color(45, 64, 89));
+        BtnConsultarProyectosPorIngeniero.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+        BtnConsultarProyectosPorIngeniero.setForeground(new java.awt.Color(255, 255, 255));
+        BtnConsultarProyectosPorIngeniero.setText("Proyectos Por Ingeniero");
+        BtnConsultarProyectosPorIngeniero.setMargin(new java.awt.Insets(0, 14, 0, 14));
+        BtnConsultarProyectosPorIngeniero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnConsultarProyectosPorIngenieroActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnConsultarProyectosPorIngeniero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 220, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 710));
 
@@ -156,7 +169,7 @@ public class PrincipalAdmistrador extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnRegistrarProyectoActionPerformed
 
     private void btonRegistrarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btonRegistrarUserActionPerformed
-        AbrirPanel(new RegistroUsuarioAdministradorForm());
+        AbrirPanel(new RegistroUsuarioIngenieroForm());
     }//GEN-LAST:event_btonRegistrarUserActionPerformed
 
     private void BtonRegistrarAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtonRegistrarAdministradorActionPerformed
@@ -175,8 +188,13 @@ public class PrincipalAdmistrador extends javax.swing.JFrame {
         AbrirFormulario(new LoginForm());
     }//GEN-LAST:event_BtnSalirActionPerformed
 
+    private void BtnConsultarProyectosPorIngenieroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConsultarProyectosPorIngenieroActionPerformed
+        AbrirPanel(new ConsultaProyectosPorIngeniero());
+    }//GEN-LAST:event_BtnConsultarProyectosPorIngenieroActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnConsultarProyectos;
+    private javax.swing.JButton BtnConsultarProyectosPorIngeniero;
     private javax.swing.JButton BtnGestionarIngeniero;
     private javax.swing.JButton BtnRegistrarProyecto;
     private javax.swing.JButton BtnSalir;

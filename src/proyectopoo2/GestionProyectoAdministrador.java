@@ -239,6 +239,7 @@ public class GestionProyectoAdministrador extends javax.swing.JFrame {
         if(proyecto.getTareas().size() != 0)
         {
             for (Tarea tarea : proyecto.getTareas()) {
+                tarea.ActualizarEstadoTarea();
                 InsertarFila(tarea);
             }
         }

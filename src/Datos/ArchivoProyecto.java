@@ -5,6 +5,7 @@ import Clases.*;
 import Clases.Proyecto;
 import Clases.Respuesta;
 import java.io.File;
+import java.util.ArrayList;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -70,6 +71,19 @@ public class ArchivoProyecto {
             ListaProyecto = new ListaProyecto();
         }
         return ListaProyecto;
+    }
+    public Respuesta<ArrayList<Proyecto>> ObtenerProyectoDeIngeniero (String cedula)
+    {
+        try {
+           ArrayList<Proyecto> proyectosIngeniero;
+            if (flujoDelArchivo.exists()) {
+                proyectosIngeniero = ObtenerListaProyecto().getObjeto().ObtenerProyectosIngeniero(cedula);
+                return new Respuesta<ArrayList<Proyecto>>(proyectosIngeniero);
+            }
+            return new Respuesta<ArrayList<Proyecto>>("no existen proyectos registrados");
+        } catch (Exception e) {
+            return new Respuesta<ArrayList<Proyecto>>(e);
+        }
     }
     public String GuardarProyecto (Proyecto Proyecto)
     {

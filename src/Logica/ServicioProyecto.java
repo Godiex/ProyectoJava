@@ -6,6 +6,7 @@ import Clases.Persona;
 import Clases.Proyecto;
 import Clases.Respuesta;
 import Datos.*;
+import java.util.ArrayList;
 
 public class ServicioProyecto {
      private final ArchivoProyecto archivoProyecto;
@@ -60,5 +61,9 @@ public class ServicioProyecto {
        {
            return "error al actualizar : " +e.getMessage();
        }
+    }
+    public Respuesta<ArrayList<Proyecto>> ObtenerProyectoDeIngeniero (String cedula)
+    {
+        return archivoProyecto.ObtenerProyectoDeIngeniero(cedula);
     }
 }

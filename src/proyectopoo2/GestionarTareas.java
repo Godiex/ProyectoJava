@@ -1,15 +1,18 @@
-
 package proyectopoo2;
+
 import Clases.*;
 import Logica.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-public class GestionTareasIngeniero extends javax.swing.JFrame {
 
-    public Proyecto proyecto; 
+public class GestionarTareas extends javax.swing.JFrame {
+
+    public Proyecto proyecto;
     DefaultTableModel modeloTablaTareas;
     DefaultTableModel modeloTablaIngenieros;
+    Tarea tarea;
 
-    public GestionTareasIngeniero(Proyecto proyecto) {
+    public GestionarTareas(Proyecto proyecto) {
         initComponents();
         this.proyecto = proyecto;
         this.setLocationRelativeTo(null);
@@ -17,6 +20,7 @@ public class GestionTareasIngeniero extends javax.swing.JFrame {
         this.LlenarTablaTarea();
         this.EstablecerInfoProyecto();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -38,7 +42,20 @@ public class GestionTareasIngeniero extends javax.swing.JFrame {
         LbProgreso = new javax.swing.JLabel();
         LbTipoContrato8 = new javax.swing.JLabel();
         BtnCerrar = new javax.swing.JButton();
-        BtnMapearTarea = new javax.swing.JButton();
+        BtnSeleccionarTarea = new javax.swing.JButton();
+        LbPropuesta2 = new javax.swing.JLabel();
+        TfDuracionTarea = new javax.swing.JTextField();
+        LbTipoContrato2 = new javax.swing.JLabel();
+        TfNombreTarea = new javax.swing.JTextField();
+        LbTipoContrato9 = new javax.swing.JLabel();
+        LbTipoContrato10 = new javax.swing.JLabel();
+        LbTipoContrato11 = new javax.swing.JLabel();
+        LbTipoContrato4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TaDescripcionTarea = new javax.swing.JTextArea();
+        TfFase = new javax.swing.JTextField();
+        TfTipo = new javax.swing.JTextField();
+        BtnCerrarTarea = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -93,11 +110,11 @@ public class GestionTareasIngeniero extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(Ttarea);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 750, 100));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 880, 100));
 
         LbTipoContrato3.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato3.setText("Tareas :");
-        getContentPane().add(LbTipoContrato3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 130, -1));
+        getContentPane().add(LbTipoContrato3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 130, -1));
 
         LbPropuesta3.setFont(new java.awt.Font("Century", 1, 20)); // NOI18N
         LbPropuesta3.setText("Datos Del Proyecto :");
@@ -131,10 +148,65 @@ public class GestionTareasIngeniero extends javax.swing.JFrame {
                 BtnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 640, 160, 40));
+        getContentPane().add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 640, 160, 40));
 
-        BtnMapearTarea.setText("Seleccionar Tarea");
-        getContentPane().add(BtnMapearTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 290, 130, 50));
+        BtnSeleccionarTarea.setText("Seleccionar Tarea");
+        BtnSeleccionarTarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSeleccionarTareaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnSeleccionarTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 160, 40));
+
+        LbPropuesta2.setFont(new java.awt.Font("Century", 1, 20)); // NOI18N
+        LbPropuesta2.setText("Tareas :");
+        getContentPane().add(LbPropuesta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
+
+        TfDuracionTarea.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
+        getContentPane().add(TfDuracionTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, 160, -1));
+
+        LbTipoContrato2.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
+        LbTipoContrato2.setText("Descripcion :");
+        getContentPane().add(LbTipoContrato2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, 139, -1));
+
+        TfNombreTarea.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
+        getContentPane().add(TfNombreTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 160, -1));
+
+        LbTipoContrato9.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
+        LbTipoContrato9.setText("Duracion de la Tarea :");
+        getContentPane().add(LbTipoContrato9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 174, -1));
+
+        LbTipoContrato10.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
+        LbTipoContrato10.setText("Fase del Proyecto :");
+        getContentPane().add(LbTipoContrato10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 139, -1));
+
+        LbTipoContrato11.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
+        LbTipoContrato11.setText("Nombre Tarea :");
+        getContentPane().add(LbTipoContrato11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 130, -1));
+
+        LbTipoContrato4.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
+        LbTipoContrato4.setText("Tipo de Tarea :");
+        getContentPane().add(LbTipoContrato4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 139, -1));
+
+        TaDescripcionTarea.setColumns(20);
+        TaDescripcionTarea.setRows(5);
+        jScrollPane2.setViewportView(TaDescripcionTarea);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, 380, 70));
+
+        TfFase.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
+        getContentPane().add(TfFase, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 550, 160, -1));
+
+        TfTipo.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
+        getContentPane().add(TfTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 160, -1));
+
+        BtnCerrarTarea.setText("Cerrar Tarea");
+        BtnCerrarTarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarTareaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnCerrarTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 150, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -155,39 +227,59 @@ public class GestionTareasIngeniero extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BtnCerrarActionPerformed
 
+    private void BtnSeleccionarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeleccionarTareaActionPerformed
+       MapearTarea(); 
+    }//GEN-LAST:event_BtnSeleccionarTareaActionPerformed
+
+    private void BtnCerrarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarTareaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarTareaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrar;
-    private javax.swing.JButton BtnMapearTarea;
+    private javax.swing.JButton BtnCerrarTarea;
+    private javax.swing.JButton BtnSeleccionarTarea;
     private javax.swing.JLabel LbProgreso;
+    private javax.swing.JLabel LbPropuesta2;
     private javax.swing.JLabel LbPropuesta3;
     private javax.swing.JLabel LbTipoContrato1;
+    private javax.swing.JLabel LbTipoContrato10;
+    private javax.swing.JLabel LbTipoContrato11;
+    private javax.swing.JLabel LbTipoContrato2;
     private javax.swing.JLabel LbTipoContrato3;
+    private javax.swing.JLabel LbTipoContrato4;
     private javax.swing.JLabel LbTipoContrato5;
     private javax.swing.JLabel LbTipoContrato6;
     private javax.swing.JLabel LbTipoContrato7;
     private javax.swing.JLabel LbTipoContrato8;
+    private javax.swing.JLabel LbTipoContrato9;
+    private javax.swing.JTextArea TaDescripcionTarea;
+    private javax.swing.JTextField TfDuracionTarea;
     private javax.swing.JTextField TfEstado;
+    private javax.swing.JTextField TfFase;
     private javax.swing.JTextField TfFechaInicio;
     private javax.swing.JTextField TfFechaLimite;
     private javax.swing.JTextField TfNombreProyecto;
+    private javax.swing.JTextField TfNombreTarea;
+    private javax.swing.JTextField TfTipo;
     private javax.swing.JTable Ttarea;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
-    
-    public void EstablecerInfoProyecto ()
-    {
+
+    public void EstablecerInfoProyecto() {
         this.TfEstado.setText(proyecto.getEstado());
         this.TfNombreProyecto.setText(proyecto.getNombre());
         this.TfFechaInicio.setText(proyecto.ObtenerFecharCorta(proyecto.getFechaInicio()));
         this.TfFechaLimite.setText(proyecto.ObtenerFecharCorta(proyecto.getFechaLimite()));
         this.LbProgreso.setText(String.valueOf(proyecto.ObtenerPorcentajeTareaRealizadas()));
     }
-    public void CrearModeloDeTablaTarea ()
-    {
-        modeloTablaTareas= new DefaultTableModel();
+
+    public void CrearModeloDeTablaTarea() {
+        modeloTablaTareas = new DefaultTableModel();
         modeloTablaTareas.addColumn("nombre");
         modeloTablaTareas.addColumn("tipo");
         modeloTablaTareas.addColumn("Fase");
@@ -197,26 +289,52 @@ public class GestionTareasIngeniero extends javax.swing.JFrame {
         modeloTablaTareas.addColumn("Fecha Final");
         this.Ttarea.setModel(modeloTablaTareas);
     }
-    public void LlenarTablaTarea ( )
-    {
-        if(proyecto.getTareas().size() != 0)
-        {
+
+    public void LlenarTablaTarea() {
+        if (proyecto.getTareas().size() != 0) {
             for (Tarea tarea : proyecto.getTareas()) {
+                tarea.ActualizarEstadoTarea();
                 InsertarFila(tarea);
             }
         }
     }
-    public void InsertarFila (Tarea tarea)
-    {
-        String [] datos =  new String[7];
-        datos[0] = tarea.getNombre();
-        datos[1] = tarea.getTipoTarea();
-        datos[2] = tarea.getFaseProyecto();
-        datos[3] = String.valueOf(tarea.getDuracion());
-        datos[4] = tarea.getEstado();
-        datos[5] = tarea.ObtenerFecharCorta(tarea.getFechaInicio());
-        datos[6] = tarea.ObtenerFecharCorta(tarea.getFechaLimite());
+
+    public void InsertarFila(Tarea tarea) {
+        String[] datos = new String[8];
+        datos[0] = String.valueOf(tarea.getIdTarea());
+        datos[1] = tarea.getNombre();
+        datos[2] = tarea.getTipoTarea();
+        datos[3] = tarea.getFaseProyecto();
+        datos[4] = String.valueOf(tarea.getDuracion());
+        datos[5] = tarea.getEstado();
+        datos[6] = tarea.ObtenerFecharCorta(tarea.getFechaInicio());
+        datos[7] = tarea.ObtenerFecharCorta(tarea.getFechaLimite());
         modeloTablaTareas.addRow(datos);
     }
-    
+
+    public Tarea ObtenerTarea() {
+        int filaSeleccionada = Ttarea.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            if (Ttarea.getSelectedRows().length == 1) {
+                int idTarea = Integer.parseInt(Ttarea.getValueAt(filaSeleccionada, 0).toString());
+                this.tarea = proyecto.BuscarTarea(idTarea);
+                return this.tarea;
+            } else {
+                Mensaje.MostrarNotificacion("error seleccione solo una fila");
+            }
+        } else {
+            Mensaje.MostrarNotificacion("error seleccione una fila");
+        }
+        return null;
+    }
+
+    public void MapearTarea() {
+        ObtenerTarea();
+        TfNombreTarea.setText(tarea.getNombre());
+        TfFase.setText(tarea.getFaseProyecto());
+        TfDuracionTarea.setText(String.valueOf(tarea.getDuracion()));
+        TfTipo.setText(tarea.getTipoTarea());
+        TaDescripcionTarea.setText(tarea.getDescripcion());
+
+    }
 }
