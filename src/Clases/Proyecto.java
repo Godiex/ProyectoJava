@@ -14,6 +14,7 @@ public class Proyecto implements Serializable
     private Calendar fechaLimite;
     private String estado;
     private ArrayList<Tarea> tareas;
+    private ArrayList<Ingeniero> ingenieros;
     private float porcentajeTareaRealizadas;
 
     public Proyecto(String nombre) {
@@ -21,9 +22,44 @@ public class Proyecto implements Serializable
         this.porcentajeTareaRealizadas = 0;
         this.fechaInicio = Calendar.getInstance();
         this.tareas = new ArrayList<>();
+        this.ingenieros = new ArrayList<>();
         this.estado = "En Desarrollo"; 
         this.CalcularFechaFinal();
     }                  
+
+    public Proyecto() {
+        this.porcentajeTareaRealizadas = 0;
+        this.fechaInicio = Calendar.getInstance();
+        this.tareas = new ArrayList<>();
+        this.ingenieros = new ArrayList<>();
+        this.estado = "En Desarrollo"; 
+        this.CalcularFechaFinal();
+    }
+    
+    public ArrayList<Ingeniero> getIngenieros() {
+        return ingenieros;
+    }
+    public void AddIngeniero(Ingeniero ingeniero)
+    {
+        Ingeniero ingenieroBuscado = BuscarIngeniero(ingeniero);
+        if(ingenieroBuscado == null)
+        {
+            this.ingenieros.add(ingeniero);
+        }
+    }
+    public Ingeniero BuscarIngeniero(Ingeniero ingeniero)
+    {
+        for (Ingeniero Ingeniero : ingenieros) {
+            if(Ingeniero.getCedula() == ingeniero.getCedula())
+            {
+                return ingeniero;
+            }
+        }
+        return null;
+    }
+    public void setIngenieros(ArrayList<Ingeniero> ingenieros) {
+        this.ingenieros = ingenieros;
+    }
     public String CerrarProyecto ()
     {    
         if(LasTareasEstanTerminadas())
@@ -110,6 +146,10 @@ public class Proyecto implements Serializable
             if (tarea.getEstado().equals("Finalizado") || tarea.getEstado().equals("Finalizado Con Retraso")) {
                 catidadTareasRealizadas = catidadTareasRealizadas + 1; 
             }
+        }
+        if(catidadTareas == 0)
+        {
+            return 0;
         }
         return catidadTareasRealizadas * 100 / catidadTareas;  
     }

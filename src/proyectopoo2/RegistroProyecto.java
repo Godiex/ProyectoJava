@@ -9,8 +9,9 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class RegistroProyecto extends javax.swing.JInternalFrame {
-    Proyecto proyecto = new Proyecto("");
+    Proyecto proyecto = new Proyecto();
     ArrayList<Tarea> tareas = new ArrayList<>();
+    ArrayList<Ingeniero> ingenieros = new ArrayList<>();
     Ingeniero ingeniero;
     private JComponent Barra = ((javax.swing.plaf.basic.BasicInternalFrameUI)getUI()).getNorthPane();
     private Dimension dimBarra = null;
@@ -482,17 +483,18 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
                 this.Insertar(tarea);
                 this.tareas.add(tarea);
                 proyecto.addTarea(tarea);
+                proyecto.AddIngeniero(tarea.getIngeniero());
                 this.MostrarFechaCalculadaProyecto();
             }
         } catch (Exception e) {
             Mensaje.MostrarNotificacion(e.getMessage());
         }
     }
-   
+    
     public void CrearProyecto()
     {
         String nombreProyecto = TfNombreProyecto.getText();
-        proyecto = new Proyecto(nombreProyecto);
+        proyecto.setNombre(TfNombreProyecto.getText());
         proyecto.setTareas(tareas);
         proyecto.CalcularFechaFinal();
         ServicioProyecto servicioProyecto = new ServicioProyecto();

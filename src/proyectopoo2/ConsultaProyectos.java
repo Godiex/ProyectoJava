@@ -39,11 +39,9 @@ public class ConsultaProyectos extends javax.swing.JInternalFrame {
 
     private void ConsultarProyectos() {
         respuesta = sProyecto.ConsultarProyectosEnDesarrollo();
-        if (!respuesta.isError()) {
-
-        } else {
+        if (respuesta.isError()) {
             Mensaje.MostrarNotificacion(respuesta.getMensaje());
-        }
+        } 
     }
 
     public void CrearModeloDeTabla() {
@@ -128,7 +126,8 @@ public class ConsultaProyectos extends javax.swing.JInternalFrame {
         if (TbProyectos.getSelectedRows().length == 1) {
             int indice = TbProyectos.getSelectedRow();
             Proyecto proyecto = this.respuesta.getObjeto().getproyectos().get(indice);
-            Mensaje.MostrarNotificacion(proyecto.getNombre());
+            GestionProyectoAdministrador gpa = new GestionProyectoAdministrador(proyecto);
+            gpa.setVisible(true);
         }
         else if (TbProyectos.getSelectedRows().length == 0) 
             Mensaje.MostrarNotificacion("Advertencia: seleccione por lo menos un proyecto");

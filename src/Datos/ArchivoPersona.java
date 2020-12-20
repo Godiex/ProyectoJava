@@ -17,6 +17,9 @@ public class ArchivoPersona {
     public ArchivoPersona() {
         flujoDelArchivo = new File(ruta);
     }
+    public ArchivoPersona(String logeados) {
+        flujoDelArchivo = new File("logeados.obj");
+    }
     
     public Respuesta<ListaPersona> Guardar (ListaPersona listaPersona)
     {
@@ -83,6 +86,12 @@ public class ArchivoPersona {
         ListaPersona.Borrar(persona.getCedula());
         Guardar(ListaPersona);
     }
+    public void EliminarUsuarioLogeado ()
+    {
+        ListaPersona ListaPersona = ObtenerListaParaCrud();
+        ListaPersona.getPersonas().remove(0);
+        Guardar(ListaPersona);
+    }
     public void Actualizar (Persona persona )
     {
         ListaPersona ListaPersona = ObtenerListaParaCrud();
@@ -93,6 +102,12 @@ public class ArchivoPersona {
     {
         ListaPersona ListaPersona = ObtenerListaParaCrud();
         Persona persona = ListaPersona.BuscarPersona(cedula);
+        return persona;
+    }
+    public Persona BuscarUsuarioLogeado ()
+    {
+        ListaPersona ListaPersona = ObtenerListaParaCrud();
+        Persona persona = ListaPersona.getPersonas().get(0);
         return persona;
     }
 }

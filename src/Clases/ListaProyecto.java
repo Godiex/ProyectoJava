@@ -44,4 +44,23 @@ public class ListaProyecto implements Serializable
         if (contador > 0) return 1;
         return 0;
     }
+    public int ObtenerPosicionDeProyecto(String nombre)
+    {
+        int posicion = 0;
+        for (Proyecto proyecto : proyectos)
+        {
+            if (proyecto.getNombre().equals(nombre))
+            {
+                return posicion;
+            }
+            posicion = posicion + 1;
+        }
+        return posicion;
+    }
+
+    public void Actualizar(Proyecto proyecto)
+    {
+        int posicion = ObtenerPosicionDeProyecto(proyecto.getNombre());
+        proyectos.set(posicion, proyecto);
+    }
 }

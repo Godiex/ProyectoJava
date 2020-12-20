@@ -2,6 +2,7 @@
 package Logica;
 
 import Clases.ListaProyecto;
+import Clases.Persona;
 import Clases.Proyecto;
 import Clases.Respuesta;
 import Datos.*;
@@ -47,5 +48,17 @@ public class ServicioProyecto {
         catch (Exception e) {
             return new Respuesta(e);
         }
+    }
+    public String Actualizar (Proyecto proyecto)
+    {
+       try  
+       {
+            archivoProyecto.Actualizar(proyecto);
+            return "Proyecto actualizado con exito";
+       }
+       catch (Exception e)
+       {
+           return "error al actualizar : " +e.getMessage();
+       }
     }
 }

@@ -102,5 +102,15 @@ public class ServicioPersona {
         } 
     }
     
-    
+    public Persona Buscar()
+    {
+        try
+        {
+           return archivoPersona.BuscarUsuarioLogeado(); 
+        }
+        catch(Exception e)
+        {
+            return null;
+        } 
+    }
 }
