@@ -34,7 +34,7 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BtnEnviarPostulacion = new javax.swing.JButton();
+        BtnGuardarProyecto = new javax.swing.JButton();
         LbPropuesta1 = new javax.swing.JLabel();
         TfFechaLimite = new javax.swing.JTextField();
         TfNombreProyecto = new javax.swing.JTextField();
@@ -86,14 +86,14 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(1000, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtnEnviarPostulacion.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
-        BtnEnviarPostulacion.setText("Registrar Proyecto");
-        BtnEnviarPostulacion.addActionListener(new java.awt.event.ActionListener() {
+        BtnGuardarProyecto.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
+        BtnGuardarProyecto.setText("Registrar Proyecto");
+        BtnGuardarProyecto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEnviarPostulacionActionPerformed(evt);
+                BtnGuardarProyectoActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnEnviarPostulacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 620, 170, 30));
+        getContentPane().add(BtnGuardarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 620, 170, 30));
 
         LbPropuesta1.setFont(new java.awt.Font("Century", 1, 30)); // NOI18N
         LbPropuesta1.setText("Registrar Proyecto");
@@ -331,12 +331,12 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnEnviarPostulacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEnviarPostulacionActionPerformed
-      
-    }//GEN-LAST:event_BtnEnviarPostulacionActionPerformed
+    private void BtnGuardarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarProyectoActionPerformed
+      this.CrearProyecto();
+    }//GEN-LAST:event_BtnGuardarProyectoActionPerformed
 
     private void TfFechaLimiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfFechaLimiteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_TfFechaLimiteActionPerformed
 
     private void TfFechaInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfFechaInicioActionPerformed
@@ -395,7 +395,7 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregarTarea;
     private javax.swing.JButton BtnCalcularFechaTarea;
-    private javax.swing.JButton BtnEnviarPostulacion;
+    private javax.swing.JButton BtnGuardarProyecto;
     private javax.swing.JComboBox<String> CmbFase;
     private javax.swing.JComboBox<String> CmbTipoTarea;
     private javax.swing.JLabel LbCedula1;
@@ -494,7 +494,8 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
         String nombreProyecto = TfNombreProyecto.getText();
         proyecto = new Proyecto(nombreProyecto);
         proyecto.setTareas(tareas);
-        
+        ServicioProyecto servicioProyecto = new ServicioProyecto();
+        Mensaje.MostrarNotificacion(servicioProyecto.GuardarProyecto(proyecto));
     }
     public void MostrarFechaCalculadaProyecto()
     {
