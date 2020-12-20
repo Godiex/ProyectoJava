@@ -17,6 +17,7 @@ import javax.swing.JInternalFrame;
 public class LoginForm extends javax.swing.JFrame {
 
     ServicioUsuario sUsuario = new ServicioUsuario();
+
     public LoginForm() {
         initComponents();
         this.setVisible(true);
@@ -84,21 +85,19 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIngresarActionPerformed
-        
-         Respuesta respuesta = sUsuario.Buscar(TfUsuario.toString(), PfContreseña.toString());
-       if(!respuesta.isError())
-       {
-           Mensaje.MostrarNotificacion(respuesta.getMensaje());
-           this.AbrirFormulario(new PrincipalAdminstrador());
-       }
-   
-        
+        Respuesta respuesta = sUsuario.Buscar(TfUsuario.getText(), PfContreseña.getText());
+        if (!respuesta.isError()) {
+            this.AbrirFormulario(new PrincipalAdminstrador());
+        }
+        else Mensaje.MostrarNotificacion(respuesta.getMensaje());;
+
+
     }//GEN-LAST:event_BtnIngresarActionPerformed
 
     private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
-        
-       System.exit(0);
-   
+
+        System.exit(0);
+
     }//GEN-LAST:event_BtnSalirActionPerformed
 
     /**
@@ -146,9 +145,8 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-    
-    public void AbrirFormulario(Frame formulario)
-    {
+
+    public void AbrirFormulario(Frame formulario) {
         formulario.setVisible(true);
         this.dispose();
     }

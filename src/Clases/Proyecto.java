@@ -213,7 +213,14 @@ public class Proyecto implements Serializable
     public String toString() {
         return "Proyecto{" + "nombre :" + nombre + ", duracion: " + duracion + ", fechaInicio: " + ObtenerFecharCorta(fechaInicio) + ", fechaLimite: " + ObtenerFecharCorta(fechaLimite) + ", estado=" + estado + '}';
     }
-
     
+    public int EncontrarIngeniero(String cedula) {
+        int contador = 0;
+        for (Tarea tarea: this.tareas) {
+            if (tarea.getIngeniero().getCedula().equals(cedula)) contador += 1;
+        }
+        if (contador > 0) return 1;
+        return 0;
+    }
     
 }

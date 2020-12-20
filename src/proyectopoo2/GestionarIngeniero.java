@@ -6,15 +6,17 @@
 package proyectopoo2;
 
 import Clases.Ingeniero;
+import Clases.Persona;
+import Clases.Respuesta;
 import Logica.ServicioPersona;
 import java.awt.Dimension;
 import javax.swing.JComponent;
 
-public class RegistrarIngeniero extends javax.swing.JInternalFrame {
+public class GestionarIngeniero extends javax.swing.JInternalFrame {
     private JComponent Barra = ((javax.swing.plaf.basic.BasicInternalFrameUI)getUI()).getNorthPane();
     private Dimension dimBarra = null;
     ServicioPersona sPersona = new ServicioPersona();
-   
+    private Ingeniero ingeniero;
     
     
     public void ocultarBarraTitulo()
@@ -24,11 +26,12 @@ public class RegistrarIngeniero extends javax.swing.JInternalFrame {
         Barra.setSize(0,0);
         Barra.setPreferredSize(new Dimension(0,0));
         repaint();
-        
+        ingeniero = new Ingeniero();
     }
-    public RegistrarIngeniero() {
+    public GestionarIngeniero() {
         initComponents();
         this.ocultarBarraTitulo();
+        this.CmbEspecialidad.setEnabled(false);
     }
 
     /**
@@ -48,33 +51,37 @@ public class RegistrarIngeniero extends javax.swing.JInternalFrame {
         TFApellido = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         LbCedula1 = new javax.swing.JLabel();
-        BtnGuardar2 = new javax.swing.JButton();
         LbNick1 = new javax.swing.JLabel();
         CmbEspecialidad = new javax.swing.JComboBox<>();
         TxtAños = new javax.swing.JTextField();
         LbContraseña1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         TxtEdad1 = new javax.swing.JTextField();
+        BtnBuscarIngeniero = new javax.swing.JButton();
+        BtnActualizar = new javax.swing.JButton();
+        BtnEliminar = new javax.swing.JButton();
+        BtnEditar = new javax.swing.JButton();
+        BtnResetear = new javax.swing.JButton();
 
         setBorder(null);
         setPreferredSize(new java.awt.Dimension(1000, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelTitulo.setFont(new java.awt.Font("Century Gothic", 1, 30)); // NOI18N
-        jLabelTitulo.setText("Registrar Ingeniero");
-        getContentPane().add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
+        jLabelTitulo.setText("Gestionar Informacion de un Ingeniero");
+        getContentPane().add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
 
         LbContraseña.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbContraseña.setText("Apellidos :");
-        getContentPane().add(LbContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
+        getContentPane().add(LbContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, -1, -1));
 
         LbNombre.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbNombre.setText("Nombre :");
-        getContentPane().add(LbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
+        getContentPane().add(LbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, -1, -1));
 
         LbNick.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbNick.setText("Años de Experiencia:");
-        getContentPane().add(LbNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+        getContentPane().add(LbNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, -1, -1));
 
         TfCedula1.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         TfCedula1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,71 +89,107 @@ public class RegistrarIngeniero extends javax.swing.JInternalFrame {
                 TfCedula1ActionPerformed(evt);
             }
         });
-        getContentPane().add(TfCedula1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 170, -1));
+        getContentPane().add(TfCedula1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 170, -1));
 
+        TFApellido.setEditable(false);
         TFApellido.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         TFApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TFApellidoActionPerformed(evt);
             }
         });
-        getContentPane().add(TFApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 170, -1));
+        getContentPane().add(TFApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 170, -1));
 
+        txtNombre.setEditable(false);
         txtNombre.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 170, -1));
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 170, -1));
 
         LbCedula1.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbCedula1.setText("Cedula :");
-        getContentPane().add(LbCedula1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
-
-        BtnGuardar2.setBackground(new java.awt.Color(255, 255, 255));
-        BtnGuardar2.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
-        BtnGuardar2.setText("Guardar");
-        BtnGuardar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnGuardar2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BtnGuardar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 560, -1, -1));
+        getContentPane().add(LbCedula1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
 
         LbNick1.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbNick1.setText("Especialidad:");
-        getContentPane().add(LbNick1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        getContentPane().add(LbNick1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, -1, -1));
 
+        CmbEspecialidad.setEditable(true);
         CmbEspecialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Analista", "Diseñador", "Programador", "Tester", "Documentador", "Arquitecto" }));
         CmbEspecialidad.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        CmbEspecialidad.setEnabled(false);
         CmbEspecialidad.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 CmbEspecialidadItemStateChanged(evt);
             }
         });
-        getContentPane().add(CmbEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 170, 30));
+        getContentPane().add(CmbEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 170, 30));
 
+        TxtAños.setEditable(false);
         TxtAños.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         TxtAños.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtAñosActionPerformed(evt);
             }
         });
-        getContentPane().add(TxtAños, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 170, -1));
+        getContentPane().add(TxtAños, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 450, 170, -1));
 
         LbContraseña1.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbContraseña1.setText("Edad:");
-        getContentPane().add(LbContraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
+        getContentPane().add(LbContraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1010, 10));
 
+        TxtEdad1.setEditable(false);
         TxtEdad1.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         TxtEdad1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtEdad1ActionPerformed(evt);
             }
         });
-        getContentPane().add(TxtEdad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 170, -1));
+        getContentPane().add(TxtEdad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 170, -1));
+
+        BtnBuscarIngeniero.setText("Buscar Ingeniero");
+        BtnBuscarIngeniero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarIngenieroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnBuscarIngeniero, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, 180, 40));
+
+        BtnActualizar.setText("Actualizar Información");
+        BtnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnActualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 180, 40));
+
+        BtnEliminar.setText("Eliminar ingeniero");
+        BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEliminarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 180, 40));
+
+        BtnEditar.setText("Editar Campos");
+        BtnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEditarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, 180, 40));
+
+        BtnResetear.setText("Resetear");
+        BtnResetear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnResetearActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnResetear, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 180, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -162,11 +205,11 @@ public class RegistrarIngeniero extends javax.swing.JInternalFrame {
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
-    private void GuardarIngeniero(){
+    private void ActualizarIngeniero(){
          Ingeniero ingeniero = CrearIngeniero();
          if(ingeniero != null)
          {
-            Mensaje.MostrarNotificacion(sPersona.GuardarPersona(ingeniero));
+            Mensaje.MostrarNotificacion(sPersona.Actualizar(ingeniero));
          }
     }
     public Ingeniero CrearIngeniero()
@@ -174,18 +217,41 @@ public class RegistrarIngeniero extends javax.swing.JInternalFrame {
         String nombre = txtNombre.getText();
         String apellidos = TFApellido.getText();
         String cedula = TfCedula1.getText();
-        String edad = TxtEdad1.getText();
+        String edad = TxtAños.getText();
         String especialidad = CmbEspecialidad.getSelectedItem().toString();
         int años = Integer.parseInt(TxtAños.getText());
         Ingeniero ingeniero = new Ingeniero(años, especialidad, cedula, nombre, apellidos, edad);
         return ingeniero;
     }
+    
+    public void MostrarIngeniero(Ingeniero ingeniero)
+    {
+        TfCedula1.setEditable(false);
+        txtNombre.setText(ingeniero.getNombres());
+        TFApellido.setText(ingeniero.getApellidos());
+        TxtEdad1.setText(ingeniero.getEdad());
+        CmbEspecialidad.setSelectedItem(ingeniero.getEspecialidad());
+        TxtAños.setText(String.valueOf(ingeniero.getAniosExperiencia()));
+    }
      
-     
-    private void BtnGuardar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardar2ActionPerformed
-           GuardarIngeniero();
-    }//GEN-LAST:event_BtnGuardar2ActionPerformed
-
+    private void ResetearCampos() {
+        TfCedula1.setText("");
+        txtNombre.setText("");
+        TFApellido.setText("");
+        TxtEdad1.setText("");
+        CmbEspecialidad.setSelectedIndex(0);
+        TxtAños.setText("");
+    }
+    
+    private Ingeniero ActualizarIngeniero(Ingeniero ingeniero) {
+        ingeniero.setNombres(txtNombre.getText());
+        ingeniero.setApellidos(TFApellido.getText());
+        ingeniero.setEdad(TxtEdad1.getText());
+        ingeniero.setEspecialidad(CmbEspecialidad.getSelectedItem().toString());
+        ingeniero.setAniosExperiencia(Integer.parseInt(TxtAños.getText()));
+        return ingeniero;
+    }
+    
     private void CmbEspecialidadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbEspecialidadItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_CmbEspecialidadItemStateChanged
@@ -198,9 +264,50 @@ public class RegistrarIngeniero extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtEdad1ActionPerformed
 
+    private void BtnBuscarIngenieroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarIngenieroActionPerformed
+        Respuesta<Persona> respuesta = sPersona.Buscar(TfCedula1.getText());
+        if (respuesta.isError()) Mensaje.MostrarNotificacion(respuesta.getMensaje());
+        else {
+            ingeniero = (Ingeniero) respuesta.getObjeto();
+            MostrarIngeniero(ingeniero);
+        }
+        
+    }//GEN-LAST:event_BtnBuscarIngenieroActionPerformed
+
+    private void BtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditarActionPerformed
+        txtNombre.setEditable(true);
+        TFApellido.setEditable(true);
+        TxtEdad1.setEditable(true);
+        CmbEspecialidad.setEnabled(true);
+        TxtAños.setEditable(true);
+    }//GEN-LAST:event_BtnEditarActionPerformed
+
+    private void BtnResetearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnResetearActionPerformed
+        TfCedula1.setEditable(true);
+        txtNombre.setEditable(false);
+        TFApellido.setEditable(false);
+        TxtEdad1.setEditable(false);
+        CmbEspecialidad.setEnabled(false);
+        TxtAños.setEditable(false);
+        this.ResetearCampos();
+    }//GEN-LAST:event_BtnResetearActionPerformed
+
+    private void BtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarActionPerformed
+        ingeniero = ActualizarIngeniero(ingeniero);
+        Mensaje.MostrarNotificacion(sPersona.Actualizar(ingeniero));
+    }//GEN-LAST:event_BtnActualizarActionPerformed
+
+    private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
+        Mensaje.MostrarNotificacion(sPersona.EliminarIngeniero(TfCedula1.getText()));
+    }//GEN-LAST:event_BtnEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnGuardar2;
+    private javax.swing.JButton BtnActualizar;
+    private javax.swing.JButton BtnBuscarIngeniero;
+    private javax.swing.JButton BtnEditar;
+    private javax.swing.JButton BtnEliminar;
+    private javax.swing.JButton BtnResetear;
     private javax.swing.JComboBox<String> CmbEspecialidad;
     private javax.swing.JLabel LbCedula1;
     private javax.swing.JLabel LbContraseña;

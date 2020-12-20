@@ -2,12 +2,14 @@
 package Logica;
 
 import Clases.ListaPersona;
+import Clases.ListaProyecto;
 import Clases.Respuesta;
 import Clases.Persona;
 import Datos.ArchivoPersona;
 
 public class ServicioPersona {
     private final ArchivoPersona archivoPersona;
+    private ServicioProyecto sProyecto;
 
     public ServicioPersona() 
     {
@@ -48,7 +50,29 @@ public class ServicioPersona {
         {
             return "error al eliminar : " +e.getMessage();
         }
-       
+    }
+    
+    public String EliminarIngeniero (String cedula) {
+        String mensaje = "";
+        Respuesta<ListaProyecto> respuesta = this.buscarProyectosEnDesarrollo();
+        if (!respuesta.isError()) {
+        int contador = respuesta.getObjeto().EncontrarIngeniero(cedula);
+        mensaje = (contador == 0)? this.Eliminar(cedula) : "El ingeniero que intenta eliminar se encuentra "
+                + "asociado a proyectos en desarrollo";
+        }
+        else mensaje = this.Eliminar(cedula);
+        return mensaje;
+    }
+    
+    public Respuesta<ListaProyecto> buscarProyectosEnDesarrollo() {
+        try {
+            ListaProyecto listaProyectos = (ListaProyecto) sProyecto.ConsultaProyecto().getObjeto().getproyectos().stream()
+                .filter((proyecto) -> proyecto.getEstado().equals("En Desarrollo"));
+            return new Respuesta(listaProyectos);    
+        }
+        catch (Exception e) {
+            return new Respuesta(e);
+        }
     }
     
     public String Actualizar (Persona Persona )

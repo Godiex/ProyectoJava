@@ -35,4 +35,13 @@ public class ListaProyecto implements Serializable
     {
         proyectos.add(Proyecto);
     }
+    
+    public int EncontrarIngeniero(String cedula) {
+        int contador = 0;
+        for (Proyecto proyecto: this.proyectos) {
+            if (proyecto.EncontrarIngeniero(cedula) == 1) contador += 1;
+        }
+        if (contador > 0) return 1;
+        return 0;
+    }
 }

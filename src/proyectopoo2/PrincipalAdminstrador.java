@@ -33,6 +33,7 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
         btonRegistrarUser = new javax.swing.JButton();
         BtonRegistrarIng = new javax.swing.JButton();
         btonRegistrarAdministrador = new javax.swing.JButton();
+        btonGestionarIngeniero = new javax.swing.JButton();
         escritorio = new javax.swing.JDesktopPane();
 
         jButton4.setText("jButton4");
@@ -91,6 +92,18 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
         });
         jPanel1.add(btonRegistrarAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 220, 30));
 
+        btonGestionarIngeniero.setBackground(new java.awt.Color(45, 64, 89));
+        btonGestionarIngeniero.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+        btonGestionarIngeniero.setForeground(new java.awt.Color(255, 255, 255));
+        btonGestionarIngeniero.setText("Gestionar Ingeniero");
+        btonGestionarIngeniero.setMargin(new java.awt.Insets(0, 14, 0, 14));
+        btonGestionarIngeniero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btonGestionarIngenieroActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btonGestionarIngeniero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 220, 30));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 710));
 
         escritorio.setPreferredSize(new java.awt.Dimension(1000, 500));
@@ -127,8 +140,13 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btonRegistrarAdministradorActionPerformed
 
+    private void btonGestionarIngenieroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btonGestionarIngenieroActionPerformed
+        this.AbrirPanel(new GestionarIngeniero());
+    }//GEN-LAST:event_btonGestionarIngenieroActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtonRegistrarIng;
+    private javax.swing.JButton btonGestionarIngeniero;
     private javax.swing.JButton btonRegistrarAdministrador;
     private javax.swing.JButton btonRegistrarUser;
     public static javax.swing.JDesktopPane escritorio;
