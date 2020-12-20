@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class ArchivoPersona {
     private final File flujoDelArchivo;
@@ -89,7 +90,7 @@ public class ArchivoPersona {
     public void EliminarUsuarioLogeado ()
     {
         ListaPersona ListaPersona = ObtenerListaParaCrud();
-        ListaPersona.getPersonas().remove(0);
+        ListaPersona.setPersonas(new ArrayList<>());
         Guardar(ListaPersona);
     }
     public void Actualizar (Persona persona )

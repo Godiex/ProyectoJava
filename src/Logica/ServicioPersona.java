@@ -9,11 +9,13 @@ import Datos.ArchivoPersona;
 
 public class ServicioPersona {
     private final ArchivoPersona archivoPersona;
+    private final ArchivoPersona archivoPersonaLogeados;
     private ServicioProyecto sProyecto;
 
     public ServicioPersona() 
     {
         archivoPersona = new ArchivoPersona();
+        archivoPersonaLogeados = new ArchivoPersona("logueados");
         sProyecto = new ServicioProyecto();
     }
     public String GuardarPersona (Persona Persona)
@@ -23,6 +25,22 @@ public class ServicioPersona {
             Persona PersonaAux = archivoPersona.Buscar(Persona.getCedula());
             if (PersonaAux == null) {
                 String mensaje = archivoPersona.GuardarPersona(Persona);
+                return mensaje;
+            }
+            return "el Persona ya se encuentra registrado";
+        }
+        catch (Exception e)
+        {
+            return "error al guardar : " +e.getMessage();
+        }
+    }
+    public String GuardarPersonaLogueada (Persona Persona)
+    {
+        try
+        {
+            Persona PersonaAux = archivoPersonaLogeados.Buscar(Persona.getCedula());
+            if (PersonaAux == null) {
+                String mensaje = archivoPersonaLogeados.GuardarPersona(Persona);
                 return mensaje;
             }
             return "el Persona ya se encuentra registrado";
@@ -106,11 +124,17 @@ public class ServicioPersona {
     {
         try
         {
-           return archivoPersona.BuscarUsuarioLogeado(); 
+           return archivoPersonaLogeados.BuscarUsuarioLogeado(); 
         }
         catch(Exception e)
         {
             return null;
         } 
+    }
+     public void EliminarIngeniero () {
+         try {
+             archivoPersonaLogeados.EliminarUsuarioLogeado();
+         } catch (Exception e) {
+         }
     }
 }

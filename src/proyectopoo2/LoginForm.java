@@ -10,10 +10,11 @@ import Clases.*;
 import java.awt.Frame;
 import javax.swing.JInternalFrame;
 
+
 public class LoginForm extends javax.swing.JFrame {
 
     ServicioUsuario sUsuario = new ServicioUsuario();
-
+    ServicioPersona servicioPersona = new ServicioPersona();
     public LoginForm() {
         initComponents();
         this.setVisible(true);
@@ -70,9 +71,20 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIngresarActionPerformed
-        Respuesta respuesta = sUsuario.Buscar(TfUsuario.getText(), PfContreseña.getText());
+        Respuesta<Usuario> respuesta = sUsuario.Buscar(TfUsuario.getText(), PfContreseña.getText());
         if (!respuesta.isError()) {
-            this.AbrirFormulario(new PrincipalAdminstrador());
+            if(respuesta.getObjeto().getTipo().equals("Administrador"))
+            {
+                this.AbrirFormulario(new PrincipalAdmistrador());
+            }
+            else
+            {
+                if(respuesta.getObjeto().getTipo().equals("Ingeniero"))
+                {
+                    this.AbrirFormulario(new PrincipalIngeniero());
+                    servicioPersona.GuardarPersonaLogueada(respuesta.getObjeto().getPersona());
+                }
+            }
         }
         else Mensaje.MostrarNotificacion(respuesta.getMensaje());;
 

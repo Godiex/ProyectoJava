@@ -17,6 +17,14 @@ public class Usuario implements Serializable
         this.persona = persona;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     public String getContraseña() {
         return contraseña;
     }
