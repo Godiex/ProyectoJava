@@ -31,8 +31,6 @@ public class PrincipalIngeniero extends javax.swing.JFrame {
 
         jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        btonRegistrarUser = new javax.swing.JButton();
         BtnGestionarProyecto = new javax.swing.JButton();
         BtnSalir = new javax.swing.JButton();
         escritorio = new javax.swing.JDesktopPane();
@@ -45,30 +43,6 @@ public class PrincipalIngeniero extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(45, 64, 89));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(45, 64, 89));
-        jButton1.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Registrar Proyecto");
-        jButton1.setMargin(new java.awt.Insets(0, 14, 0, 14));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 220, 30));
-
-        btonRegistrarUser.setBackground(new java.awt.Color(45, 64, 89));
-        btonRegistrarUser.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
-        btonRegistrarUser.setForeground(new java.awt.Color(255, 255, 255));
-        btonRegistrarUser.setText("Registro Usuario");
-        btonRegistrarUser.setMargin(new java.awt.Insets(0, 14, 0, 14));
-        btonRegistrarUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btonRegistrarUserActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btonRegistrarUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 220, 30));
-
         BtnGestionarProyecto.setBackground(new java.awt.Color(45, 64, 89));
         BtnGestionarProyecto.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         BtnGestionarProyecto.setForeground(new java.awt.Color(255, 255, 255));
@@ -79,7 +53,7 @@ public class PrincipalIngeniero extends javax.swing.JFrame {
                 BtnGestionarProyectoActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnGestionarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 30));
+        jPanel1.add(BtnGestionarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 220, 30));
 
         BtnSalir.setText("Salir");
         BtnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -113,14 +87,6 @@ public class PrincipalIngeniero extends javax.swing.JFrame {
         AbrirPanel(new GestionarProyectoIngeniero());   
     }//GEN-LAST:event_BtnGestionarProyectoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        AbrirPanel(new RegistroProyecto());
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void btonRegistrarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btonRegistrarUserActionPerformed
-        AbrirPanel(new RegistroUsuarioAdministradorForm());
-    }//GEN-LAST:event_btonRegistrarUserActionPerformed
-
     private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
         servicioPersona.EliminarIngeniero();
         AbrirFormulario(new LoginForm());
@@ -129,9 +95,7 @@ public class PrincipalIngeniero extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnGestionarProyecto;
     private javax.swing.JButton BtnSalir;
-    private javax.swing.JButton btonRegistrarUser;
     public static javax.swing.JDesktopPane escritorio;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
