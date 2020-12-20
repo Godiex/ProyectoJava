@@ -11,7 +11,7 @@ import java.awt.Dimension;
 import javax.swing.JComponent;
 import javax.swing.table.DefaultTableModel;
 
-public class ConsultaProyectos extends javax.swing.JInternalFrame {
+public class ConsultaProyectosPorIngeniero extends javax.swing.JInternalFrame {
 
     private JComponent Barra = ((javax.swing.plaf.basic.BasicInternalFrameUI) getUI()).getNorthPane();
     private Dimension dimBarra = null;
@@ -28,7 +28,7 @@ public class ConsultaProyectos extends javax.swing.JInternalFrame {
 
     }
 
-    public ConsultaProyectos() {
+    public ConsultaProyectosPorIngeniero() {
         initComponents();
         this.ocultarBarraTitulo();
         respuesta = new Respuesta(new ListaProyecto());
