@@ -34,6 +34,7 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
         BtonRegistrarIng = new javax.swing.JButton();
         btonRegistrarAdministrador = new javax.swing.JButton();
         btonGestionarIngeniero = new javax.swing.JButton();
+        btonConsultarProyectos = new javax.swing.JButton();
         escritorio = new javax.swing.JDesktopPane();
 
         jButton4.setText("jButton4");
@@ -104,6 +105,18 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
         });
         jPanel1.add(btonGestionarIngeniero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 220, 30));
 
+        btonConsultarProyectos.setBackground(new java.awt.Color(45, 64, 89));
+        btonConsultarProyectos.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+        btonConsultarProyectos.setForeground(new java.awt.Color(255, 255, 255));
+        btonConsultarProyectos.setText("Consultar Proyectos");
+        btonConsultarProyectos.setMargin(new java.awt.Insets(0, 14, 0, 14));
+        btonConsultarProyectos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btonConsultarProyectosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btonConsultarProyectos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 220, 30));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 710));
 
         escritorio.setPreferredSize(new java.awt.Dimension(1000, 500));
@@ -144,8 +157,13 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
         this.AbrirPanel(new GestionarIngeniero());
     }//GEN-LAST:event_btonGestionarIngenieroActionPerformed
 
+    private void btonConsultarProyectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btonConsultarProyectosActionPerformed
+        this.AbrirPanel(new ConsultaProyectos());
+    }//GEN-LAST:event_btonConsultarProyectosActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtonRegistrarIng;
+    private javax.swing.JButton btonConsultarProyectos;
     private javax.swing.JButton btonGestionarIngeniero;
     private javax.swing.JButton btonRegistrarAdministrador;
     private javax.swing.JButton btonRegistrarUser;
