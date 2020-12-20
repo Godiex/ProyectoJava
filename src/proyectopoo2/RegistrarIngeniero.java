@@ -66,15 +66,15 @@ public class RegistrarIngeniero extends javax.swing.JInternalFrame {
 
         LbContraseña.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbContraseña.setText("Apellidos :");
-        getContentPane().add(LbContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
+        getContentPane().add(LbContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, -1));
 
         LbNombre.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbNombre.setText("Nombre :");
-        getContentPane().add(LbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
+        getContentPane().add(LbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
 
         LbNick.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbNick.setText("Años de Experiencia:");
-        getContentPane().add(LbNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+        getContentPane().add(LbNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
 
         TfCedula1.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         TfCedula1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +82,7 @@ public class RegistrarIngeniero extends javax.swing.JInternalFrame {
                 TfCedula1ActionPerformed(evt);
             }
         });
-        getContentPane().add(TfCedula1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 170, -1));
+        getContentPane().add(TfCedula1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 170, -1));
 
         TFApellido.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         TFApellido.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +90,7 @@ public class RegistrarIngeniero extends javax.swing.JInternalFrame {
                 TFApellidoActionPerformed(evt);
             }
         });
-        getContentPane().add(TFApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 170, -1));
+        getContentPane().add(TFApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 170, -1));
 
         txtNombre.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -98,11 +98,11 @@ public class RegistrarIngeniero extends javax.swing.JInternalFrame {
                 txtNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 170, -1));
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 170, -1));
 
         LbCedula1.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbCedula1.setText("Cedula :");
-        getContentPane().add(LbCedula1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+        getContentPane().add(LbCedula1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
 
         BtnGuardar2.setBackground(new java.awt.Color(255, 255, 255));
         BtnGuardar2.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
@@ -116,7 +116,7 @@ public class RegistrarIngeniero extends javax.swing.JInternalFrame {
 
         LbNick1.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbNick1.setText("Especialidad:");
-        getContentPane().add(LbNick1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        getContentPane().add(LbNick1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
 
         CmbEspecialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Analista", "Diseñador", "Programador", "Tester", "Documentador", "Arquitecto" }));
         CmbEspecialidad.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -125,7 +125,7 @@ public class RegistrarIngeniero extends javax.swing.JInternalFrame {
                 CmbEspecialidadItemStateChanged(evt);
             }
         });
-        getContentPane().add(CmbEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 170, 30));
+        getContentPane().add(CmbEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 170, 30));
 
         TxtAños.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         TxtAños.addActionListener(new java.awt.event.ActionListener() {
@@ -133,11 +133,11 @@ public class RegistrarIngeniero extends javax.swing.JInternalFrame {
                 TxtAñosActionPerformed(evt);
             }
         });
-        getContentPane().add(TxtAños, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 170, -1));
+        getContentPane().add(TxtAños, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 170, -1));
 
         LbContraseña1.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbContraseña1.setText("Edad:");
-        getContentPane().add(LbContraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
+        getContentPane().add(LbContraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1010, 10));
 
         TxtEdad1.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
@@ -146,7 +146,7 @@ public class RegistrarIngeniero extends javax.swing.JInternalFrame {
                 TxtEdad1ActionPerformed(evt);
             }
         });
-        getContentPane().add(TxtEdad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 170, -1));
+        getContentPane().add(TxtEdad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 170, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

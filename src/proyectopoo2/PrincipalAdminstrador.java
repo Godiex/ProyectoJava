@@ -6,6 +6,7 @@
 package proyectopoo2;
 
 import java.awt.Dimension;
+import java.awt.Frame;
 import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
     
@@ -33,6 +34,7 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
         btonRegistrarUser = new javax.swing.JButton();
         BtonRegistrarIng = new javax.swing.JButton();
         btonRegistrarAdministrador = new javax.swing.JButton();
+        BtnSalir = new javax.swing.JButton();
         escritorio = new javax.swing.JDesktopPane();
 
         jButton4.setText("jButton4");
@@ -91,6 +93,14 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
         });
         jPanel1.add(btonRegistrarAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 220, 30));
 
+        BtnSalir.setText("Salir");
+        BtnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 660, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 710));
 
         escritorio.setPreferredSize(new java.awt.Dimension(1000, 500));
@@ -124,10 +134,15 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btonRegistrarUserActionPerformed
 
     private void btonRegistrarAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btonRegistrarAdministradorActionPerformed
-        // TODO add your handling code here:
+        AbrirPanel(new RegistroUsuarioIngenieroForm());
     }//GEN-LAST:event_btonRegistrarAdministradorActionPerformed
 
+    private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
+        AbrirFormulario(new LoginForm());
+    }//GEN-LAST:event_BtnSalirActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnSalir;
     private javax.swing.JButton BtonRegistrarIng;
     private javax.swing.JButton btonRegistrarAdministrador;
     private javax.swing.JButton btonRegistrarUser;
@@ -142,5 +157,10 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
         PrincipalAdminstrador.escritorio.removeAll();
         PrincipalAdminstrador.escritorio.add(formularioInterno);
         formularioInterno.setVisible(true);
+    }
+    public void AbrirFormulario(Frame formulario)
+    {
+        formulario.setVisible(true);
+        this.dispose();
     }
 }
