@@ -482,6 +482,7 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
                 this.Insertar(tarea);
                 this.tareas.add(tarea);
                 proyecto.addTarea(tarea);
+                proyecto.AddIngeniero(tarea.getIngeniero());
                 this.MostrarFechaCalculadaProyecto();
             }
         } catch (Exception e) {

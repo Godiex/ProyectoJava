@@ -138,7 +138,7 @@ public class RegistrarIngeniero extends javax.swing.JInternalFrame {
         LbContraseña1.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbContraseña1.setText("Edad:");
         getContentPane().add(LbContraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1010, 10));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 980, 10));
 
         TxtEdad1.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         TxtEdad1.addActionListener(new java.awt.event.ActionListener() {
