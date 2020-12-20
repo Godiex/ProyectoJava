@@ -88,6 +88,9 @@ public class ConsultaProyectosPorIngeniero extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TbProyectos = new javax.swing.JTable();
         BtnVisualizarProyecto = new javax.swing.JButton();
+        BtnBuscar = new javax.swing.JButton();
+        TxtCedula = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
         setPreferredSize(new java.awt.Dimension(1000, 700));
@@ -111,7 +114,7 @@ public class ConsultaProyectosPorIngeniero extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(TbProyectos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 690, 330));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 690, 330));
 
         BtnVisualizarProyecto.setText("Visualizar Proyecto Seleccionado");
         BtnVisualizarProyecto.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +122,19 @@ public class ConsultaProyectosPorIngeniero extends javax.swing.JInternalFrame {
                 BtnVisualizarProyectoActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnVisualizarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, 310, 40));
+        getContentPane().add(BtnVisualizarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 230, 40));
+
+        BtnBuscar.setText("Buscar Proyectos");
+        BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 230, 40));
+        getContentPane().add(TxtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 190, 20));
+
+        jLabel1.setText("Cédula del ingeniero:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -135,10 +150,20 @@ public class ConsultaProyectosPorIngeniero extends javax.swing.JInternalFrame {
         else Mensaje.MostrarNotificacion("Advertencia: debe seleccionar solo un proyecto");
     }//GEN-LAST:event_BtnVisualizarProyectoActionPerformed
 
+    private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
+        if (TxtCedula.getText() != "") {
+            
+        }
+        else Mensaje.MostrarNotificacion("Advertencia: Debe digitar la cedula del ingeniero a consultar");
+    }//GEN-LAST:event_BtnBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnBuscar;
     private javax.swing.JButton BtnVisualizarProyecto;
     private javax.swing.JTable TbProyectos;
+    private javax.swing.JTextField TxtCedula;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

@@ -3,24 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/proyectopoo2/PrincipalAdminstrador.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/Clases/ListaPersona.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/proyectopoo2/GestionProyectoAdministrador.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/Datos/ArchivoPersona.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/Clases/Usuario.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/Logica/ServicioPersona.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/Logica/ServicioProyecto.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/Datos/ArchivoProyecto.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/Clases/ListaProyecto.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/proyectopoo2/ConsultaProyectos.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/proyectopoo2/PrincipalIngeniero.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/proyectopoo2/RegistrarIngeniero.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/proyectopoo2/RegistroProyecto.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/Logica/ServicioUsuario.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/Clases/ListaUsuario.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/Clases/Proyecto.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/Clases/Persona.java</file>
-            <file>file:/D:/Documentos/ProyectoPoo2/ProyectoPoo2/src/Datos/ArchivoUsuario.java</file>
+            <file>file:/D:/Escritorio/PROYECTO%20POO2/ProyectoJava/src/proyectopoo2/PrincipalIngeniero.java</file>
+            <file>file:/D:/Escritorio/PROYECTO%20POO2/ProyectoJava/src/proyectopoo2/PrincipalAdminstrador.java</file>
+            <file>file:/D:/Escritorio/PROYECTO%20POO2/ProyectoJava/src/proyectopoo2/GestionarIngeniero.java</file>
+            <file>file:/D:/Escritorio/PROYECTO%20POO2/ProyectoJava/src/Clases/ListaProyecto.java</file>
+            <file>file:/D:/Escritorio/PROYECTO%20POO2/ProyectoJava/src/Datos/ArchivoProyecto.java</file>
+            <file>file:/D:/Escritorio/PROYECTO%20POO2/ProyectoJava/src/proyectopoo2/ConsultaProyectosPorIngeniero.java</file>
+            <file>file:/D:/Escritorio/PROYECTO%20POO2/ProyectoJava/src/proyectopoo2/GestionProyectoAdministrador.java</file>
+            <file>file:/D:/Escritorio/PROYECTO%20POO2/ProyectoJava/src/proyectopoo2/RegistroProyecto.java</file>
+            <file>file:/D:/Escritorio/PROYECTO%20POO2/ProyectoJava/src/Clases/Respuesta.java</file>
+            <file>file:/D:/Escritorio/PROYECTO%20POO2/ProyectoJava/src/Logica/ServicioPersona.java</file>
+            <file>file:/D:/Escritorio/PROYECTO%20POO2/ProyectoJava/src/proyectopoo2/ConsultaProyectos.java</file>
+            <file>file:/D:/Escritorio/PROYECTO%20POO2/ProyectoJava/src/proyectopoo2/RegistrarIngeniero.java</file>
+            <file>file:/D:/Escritorio/PROYECTO%20POO2/ProyectoJava/src/Logica/ServicioProyecto.java</file>
         </group>
     </open-files>
 </project-private>
