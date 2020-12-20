@@ -190,7 +190,6 @@ public class PrincipalAdmistrador extends javax.swing.JFrame {
 
     public void AbrirPanel(JInternalFrame formularioInterno)
     {
-        PrincipalAdmistrador.escritorio.removeAll();
         PrincipalAdmistrador.escritorio.add(formularioInterno);
         formularioInterno.setVisible(true);
     }
