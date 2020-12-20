@@ -33,7 +33,7 @@ public class PrincipalIngeniero extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         btonRegistrarUser = new javax.swing.JButton();
-        BtonRegistrarIng = new javax.swing.JButton();
+        BtnGestionarProyecto = new javax.swing.JButton();
         BtnSalir = new javax.swing.JButton();
         escritorio = new javax.swing.JDesktopPane();
 
@@ -69,17 +69,17 @@ public class PrincipalIngeniero extends javax.swing.JFrame {
         });
         jPanel1.add(btonRegistrarUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 220, 30));
 
-        BtonRegistrarIng.setBackground(new java.awt.Color(45, 64, 89));
-        BtonRegistrarIng.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
-        BtonRegistrarIng.setForeground(new java.awt.Color(255, 255, 255));
-        BtonRegistrarIng.setText("Registrar Ingeniero");
-        BtonRegistrarIng.setMargin(new java.awt.Insets(0, 14, 0, 14));
-        BtonRegistrarIng.addActionListener(new java.awt.event.ActionListener() {
+        BtnGestionarProyecto.setBackground(new java.awt.Color(45, 64, 89));
+        BtnGestionarProyecto.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
+        BtnGestionarProyecto.setForeground(new java.awt.Color(255, 255, 255));
+        BtnGestionarProyecto.setText("Gestionar Proyectos");
+        BtnGestionarProyecto.setMargin(new java.awt.Insets(0, 14, 0, 14));
+        BtnGestionarProyecto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtonRegistrarIngActionPerformed(evt);
+                BtnGestionarProyectoActionPerformed(evt);
             }
         });
-        jPanel1.add(BtonRegistrarIng, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 30));
+        jPanel1.add(BtnGestionarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 30));
 
         BtnSalir.setText("Salir");
         BtnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -109,9 +109,9 @@ public class PrincipalIngeniero extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtonRegistrarIngActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtonRegistrarIngActionPerformed
-        AbrirPanel(new RegistrarIngeniero());   
-    }//GEN-LAST:event_BtonRegistrarIngActionPerformed
+    private void BtnGestionarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGestionarProyectoActionPerformed
+        AbrirPanel(new GestionarProyectoIngeniero());   
+    }//GEN-LAST:event_BtnGestionarProyectoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         AbrirPanel(new RegistroProyecto());
@@ -127,8 +127,8 @@ public class PrincipalIngeniero extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnGestionarProyecto;
     private javax.swing.JButton BtnSalir;
-    private javax.swing.JButton BtonRegistrarIng;
     private javax.swing.JButton btonRegistrarUser;
     public static javax.swing.JDesktopPane escritorio;
     private javax.swing.JButton jButton1;

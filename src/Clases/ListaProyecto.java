@@ -44,6 +44,17 @@ public class ListaProyecto implements Serializable
         if (contador > 0) return 1;
         return 0;
     }
+    public ArrayList<Proyecto> ObtenerProyectosIngeniero(String cedula)
+    {
+        ArrayList<Proyecto> proyectos = new ArrayList<>();
+        for (Proyecto proyecto: this.proyectos) {
+            if (proyecto.BuscarIngeniero(cedula) != null)
+            {
+                proyectos.add(proyecto);
+            }
+        }
+        return proyectos;
+    }
     public int ObtenerPosicionDeProyecto(String nombre)
     {
         int posicion = 0;

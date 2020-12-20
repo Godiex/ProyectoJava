@@ -41,18 +41,18 @@ public class Proyecto implements Serializable
     }
     public void AddIngeniero(Ingeniero ingeniero)
     {
-        Ingeniero ingenieroBuscado = BuscarIngeniero(ingeniero);
+        Ingeniero ingenieroBuscado = BuscarIngeniero(ingeniero.getCedula());
         if(ingenieroBuscado == null)
         {
             this.ingenieros.add(ingeniero);
         }
     }
-    public Ingeniero BuscarIngeniero(Ingeniero ingeniero)
+    public Ingeniero BuscarIngeniero(String cedula)
     {
         for (Ingeniero Ingeniero : ingenieros) {
-            if(Ingeniero.getCedula() == ingeniero.getCedula())
+            if(Ingeniero.getCedula().equals(cedula))
             {
-                return ingeniero;
+                return Ingeniero;
             }
         }
         return null;

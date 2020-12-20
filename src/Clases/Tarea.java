@@ -33,7 +33,7 @@ public abstract class Tarea implements Serializable
         estado = "En Desarrollo";
         this.CalcularFechaFinal();
     }
-    public void ActualizadarEstadoTarea ()
+    public void CerrarTarea ()
     {    
         if(EstaRetrasado())
         {
@@ -42,6 +42,13 @@ public abstract class Tarea implements Serializable
         else
         {
             this.estado = "Finalizado";
+        }
+    }
+    public void ActualizarEstadoTarea ()
+    {    
+        if(EstaRetrasado())
+        {
+            this.estado = "En Desarrollo Con restraso";
         }
     }
 

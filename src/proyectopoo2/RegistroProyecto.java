@@ -494,7 +494,7 @@ public class RegistroProyecto extends javax.swing.JInternalFrame {
     public void CrearProyecto()
     {
         String nombreProyecto = TfNombreProyecto.getText();
-        proyecto.setNombre(TfNombreProyecto.getText());
+        proyecto.setNombre(nombreProyecto);
         proyecto.setTareas(tareas);
         proyecto.CalcularFechaFinal();
         ServicioProyecto servicioProyecto = new ServicioProyecto();
