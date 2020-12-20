@@ -1,7 +1,7 @@
 
 package Datos;
 
-import Clases.ListaProyecto;
+import Clases.*;
 import Clases.Proyecto;
 import Clases.Respuesta;
 import java.io.File;
@@ -77,5 +77,11 @@ public class ArchivoProyecto {
         ListaProyecto.Guardar(Proyecto);
         String mensaje = Guardar(ListaProyecto).getMensaje();
         return mensaje;
+    }
+    public void Actualizar (Proyecto Proyecto )
+    {
+        ListaProyecto ListaProyecto = ObtenerListaParaCrud();
+        ListaProyecto.Actualizar(Proyecto);
+        Guardar(ListaProyecto);
     }
 }

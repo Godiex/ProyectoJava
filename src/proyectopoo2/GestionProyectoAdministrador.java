@@ -1,6 +1,7 @@
 
 package proyectopoo2;
 import Clases.*;
+import Logica.*;
 import javax.swing.table.DefaultTableModel;
 public class GestionProyectoAdministrador extends javax.swing.JFrame {
 
@@ -8,10 +9,12 @@ public class GestionProyectoAdministrador extends javax.swing.JFrame {
     DefaultTableModel modeloTablaTareas;
     DefaultTableModel modeloTablaIngenieros;
 
-    public GestionProyectoAdministrador() {
+    public GestionProyectoAdministrador(Proyecto proyecto) {
         initComponents();
+        this.proyecto = proyecto;
         this.setLocationRelativeTo(null);
         this.CrearModeloDeTablaTarea();
+        this.CrearModeloDeTablaIngenieros();
         this.LlenarTablaTarea();
         this.LlenarTablaIngeniero();
         this.EstablecerInfoProyecto();
@@ -40,6 +43,7 @@ public class GestionProyectoAdministrador extends javax.swing.JFrame {
         LbProgreso = new javax.swing.JLabel();
         LbTipoContrato8 = new javax.swing.JLabel();
         BtnCerrar = new javax.swing.JButton();
+        BtnCerrarProyecto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -94,7 +98,7 @@ public class GestionProyectoAdministrador extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(Ttarea);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 540, 100));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 750, 100));
 
         LbTipoContrato3.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato3.setText("Tareas :");
@@ -118,7 +122,7 @@ public class GestionProyectoAdministrador extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(TIngenieros);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 540, 100));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 730, 100));
 
         LbTipoContrato4.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato4.setText("Ingenieros");
@@ -146,13 +150,21 @@ public class GestionProyectoAdministrador extends javax.swing.JFrame {
         LbTipoContrato8.setText("Fecha Limite");
         getContentPane().add(LbTipoContrato8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, 166, -1));
 
-        BtnCerrar.setText("Cerrar");
+        BtnCerrar.setText("Cerrar Pestaña");
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 640, 120, 40));
+        getContentPane().add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 640, 160, 40));
+
+        BtnCerrarProyecto.setText("Cerrar Proyecto");
+        BtnCerrarProyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarProyectoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnCerrarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, 140, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -173,40 +185,14 @@ public class GestionProyectoAdministrador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BtnCerrarActionPerformed
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionProyectoAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionProyectoAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionProyectoAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionProyectoAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void BtnCerrarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarProyectoActionPerformed
+      CerrarProyecto();
+    }//GEN-LAST:event_BtnCerrarProyectoActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GestionProyectoAdministrador().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrar;
+    private javax.swing.JButton BtnCerrarProyecto;
     private javax.swing.JLabel LbProgreso;
     private javax.swing.JLabel LbPropuesta3;
     private javax.swing.JLabel LbTipoContrato1;
@@ -242,6 +228,8 @@ public class GestionProyectoAdministrador extends javax.swing.JFrame {
         modeloTablaTareas.addColumn("nombre");
         modeloTablaTareas.addColumn("tipo");
         modeloTablaTareas.addColumn("Fase");
+        modeloTablaTareas.addColumn("Duracion");
+        modeloTablaTareas.addColumn("Estado");
         modeloTablaTareas.addColumn("Fecha Inicio");
         modeloTablaTareas.addColumn("Fecha Final");
         this.Ttarea.setModel(modeloTablaTareas);
@@ -257,13 +245,14 @@ public class GestionProyectoAdministrador extends javax.swing.JFrame {
     }
     public void InsertarFila (Tarea tarea)
     {
-        String [] datos =  new String[6];
+        String [] datos =  new String[7];
         datos[0] = tarea.getNombre();
         datos[1] = tarea.getTipoTarea();
         datos[2] = tarea.getFaseProyecto();
         datos[3] = String.valueOf(tarea.getDuracion());
-        datos[4] = tarea.ObtenerFecharCorta(tarea.getFechaInicio());
-        datos[5] = tarea.ObtenerFecharCorta(tarea.getFechaLimite());
+        datos[4] = tarea.getEstado();
+        datos[5] = tarea.ObtenerFecharCorta(tarea.getFechaInicio());
+        datos[6] = tarea.ObtenerFecharCorta(tarea.getFechaLimite());
         modeloTablaTareas.addRow(datos);
     }
     public void CrearModeloDeTablaIngenieros ()
@@ -284,7 +273,7 @@ public class GestionProyectoAdministrador extends javax.swing.JFrame {
                 InsertarFilaIngeniero(Ingeniero);
             }
         }
-    }
+        }
     public void InsertarFilaIngeniero (Ingeniero Ingeniero)
     {
         String [] datos =  new String[5];
@@ -293,6 +282,15 @@ public class GestionProyectoAdministrador extends javax.swing.JFrame {
         datos[2] = Ingeniero.getEspecialidad();
         datos[3] = Ingeniero.getEdad();
         datos[4] = String.valueOf(Ingeniero.getAniosExperiencia());
-        modeloTablaTareas.addRow(datos);
+        modeloTablaIngenieros.addRow(datos);
+    }
+    public void CerrarProyecto ()
+    {
+        Mensaje.MostrarNotificacion(this.proyecto.CerrarProyecto());
+        if(this.proyecto.getEstado().equals("Finalizado Con Retraso") || this.proyecto.getEstado().equals("Finalizado"))
+        {
+            ServicioProyecto servicioProyecto = new ServicioProyecto();
+            servicioProyecto.Actualizar(proyecto);
+        }
     }
 }

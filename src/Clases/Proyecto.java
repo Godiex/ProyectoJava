@@ -27,6 +27,15 @@ public class Proyecto implements Serializable
         this.CalcularFechaFinal();
     }                  
 
+    public Proyecto() {
+        this.porcentajeTareaRealizadas = 0;
+        this.fechaInicio = Calendar.getInstance();
+        this.tareas = new ArrayList<>();
+        this.ingenieros = new ArrayList<>();
+        this.estado = "En Desarrollo"; 
+        this.CalcularFechaFinal();
+    }
+    
     public ArrayList<Ingeniero> getIngenieros() {
         return ingenieros;
     }
@@ -137,6 +146,10 @@ public class Proyecto implements Serializable
             if (tarea.getEstado().equals("Finalizado") || tarea.getEstado().equals("Finalizado Con Retraso")) {
                 catidadTareasRealizadas = catidadTareasRealizadas + 1; 
             }
+        }
+        if(catidadTareas == 0)
+        {
+            return 0;
         }
         return catidadTareasRealizadas * 100 / catidadTareas;  
     }
