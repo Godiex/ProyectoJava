@@ -298,7 +298,8 @@ public class GestionarIngeniero extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtnActualizarActionPerformed
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
-        Mensaje.MostrarNotificacion(sPersona.EliminarIngeniero(TfCedula1.getText()));
+        String mensaje = sPersona.EliminarIngeniero(TfCedula1.getText());
+        Mensaje.MostrarNotificacion(mensaje);
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
 

@@ -5,40 +5,73 @@
  */
 package proyectopoo2;
 
-import Clases.ListaProyecto;
-import Clases.Respuesta;
+import Clases.*;
 import Logica.ServicioProyecto;
 import java.awt.Dimension;
 import javax.swing.JComponent;
+import javax.swing.table.DefaultTableModel;
 
 public class ConsultaProyectos extends javax.swing.JInternalFrame {
-    private JComponent Barra = ((javax.swing.plaf.basic.BasicInternalFrameUI)getUI()).getNorthPane();
+
+    private JComponent Barra = ((javax.swing.plaf.basic.BasicInternalFrameUI) getUI()).getNorthPane();
     private Dimension dimBarra = null;
     ServicioProyecto sProyecto = new ServicioProyecto();
     Respuesta<ListaProyecto> respuesta;
-    
-    public void ocultarBarraTitulo()
-    {
-        Barra = ((javax.swing.plaf.basic.BasicInternalFrameUI)getUI()).getNorthPane();
+    DefaultTableModel modeloTabla;
+
+    public void ocultarBarraTitulo() {
+        Barra = ((javax.swing.plaf.basic.BasicInternalFrameUI) getUI()).getNorthPane();
         dimBarra = Barra.getPreferredSize();
-        Barra.setSize(0,0);
-        Barra.setPreferredSize(new Dimension(0,0));
+        Barra.setSize(0, 0);
+        Barra.setPreferredSize(new Dimension(0, 0));
         repaint();
-        
+
     }
+
     public ConsultaProyectos() {
         initComponents();
         this.ocultarBarraTitulo();
         respuesta = new Respuesta(new ListaProyecto());
         this.ConsultarProyectos();
+        this.CrearModeloDeTabla();
+        this.Insertar();
     }
-    
+
     private void ConsultarProyectos() {
         respuesta = sProyecto.ConsultarProyectosEnDesarrollo();
         if (!respuesta.isError()) {
-            
+
+        } else {
+            Mensaje.MostrarNotificacion(respuesta.getMensaje());
         }
-        else Mensaje.MostrarNotificacion(respuesta.getMensaje());
+    }
+
+    public void CrearModeloDeTabla() {
+        modeloTabla = new DefaultTableModel();
+        modeloTabla.addColumn("Nombre");
+        modeloTabla.addColumn("Fecha de Inicio");
+        modeloTabla.addColumn("Fecha Final");
+        modeloTabla.addColumn("Cantidad Completado");
+        modeloTabla.addColumn("Estado");
+        this.TbProyectos.setModel(modeloTabla);
+    }
+
+    public void Insertar() {
+        if (TbProyectos != null) {
+            this.respuesta.getObjeto().getproyectos().forEach(proyecto -> {
+                InsertarFila(proyecto);
+            });
+        }
+    }
+
+    public void InsertarFila(Proyecto proyecto) {
+        String[] datos = new String[5];
+        datos[0] = proyecto.getNombre();
+        datos[1] = proyecto.ObtenerFecharCorta(proyecto.getFechaInicio());
+        datos[2] = proyecto.ObtenerFecharCorta(proyecto.getFechaLimite());
+        datos[3] = String.valueOf(proyecto.ObtenerPorcentajeTareaRealizadas()*100 + "%");
+        datos[4] = String.valueOf(proyecto.getEstado());
+        modeloTabla.addRow(datos);
     }
 
     /**
@@ -52,6 +85,9 @@ public class ConsultaProyectos extends javax.swing.JInternalFrame {
 
         jLabelTitulo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TbProyectos = new javax.swing.JTable();
+        BtnVisualizarProyecto = new javax.swing.JButton();
 
         setBorder(null);
         setPreferredSize(new java.awt.Dimension(1000, 700));
@@ -62,13 +98,49 @@ public class ConsultaProyectos extends javax.swing.JInternalFrame {
         getContentPane().add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1010, 10));
 
+        TbProyectos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(TbProyectos);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 690, 330));
+
+        BtnVisualizarProyecto.setText("Visualizar Proyecto Seleccionado");
+        BtnVisualizarProyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnVisualizarProyectoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnVisualizarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, 310, 40));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
-        
-     
+
+    private void BtnVisualizarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVisualizarProyectoActionPerformed
+        if (TbProyectos.getSelectedRows().length == 1) {
+            int indice = TbProyectos.getSelectedRow();
+            Proyecto proyecto = this.respuesta.getObjeto().getproyectos().get(indice);
+            Mensaje.MostrarNotificacion(proyecto.getNombre());
+        }
+        else if (TbProyectos.getSelectedRows().length == 0) 
+            Mensaje.MostrarNotificacion("Advertencia: seleccione por lo menos un proyecto");
+        else Mensaje.MostrarNotificacion("Advertencia: debe seleccionar solo un proyecto");
+    }//GEN-LAST:event_BtnVisualizarProyectoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnVisualizarProyecto;
+    private javax.swing.JTable TbProyectos;
     private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
