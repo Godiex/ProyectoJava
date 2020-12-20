@@ -14,6 +14,7 @@ public class ServicioPersona {
     public ServicioPersona() 
     {
         archivoPersona = new ArchivoPersona();
+        sProyecto = new ServicioProyecto();
     }
     public String GuardarPersona (Persona Persona)
     {
@@ -54,7 +55,8 @@ public class ServicioPersona {
     
     public String EliminarIngeniero (String cedula) {
         String mensaje = "";
-        Respuesta<ListaProyecto> respuesta = this.buscarProyectosEnDesarrollo();
+        Respuesta<ListaProyecto> respuesta = new Respuesta(new ListaProyecto());
+        respuesta = sProyecto.ConsultarProyectosEnDesarrollo();
         if (!respuesta.isError()) {
         int contador = respuesta.getObjeto().EncontrarIngeniero(cedula);
         mensaje = (contador == 0)? this.Eliminar(cedula) : "El ingeniero que intenta eliminar se encuentra "
@@ -62,17 +64,6 @@ public class ServicioPersona {
         }
         else mensaje = this.Eliminar(cedula);
         return mensaje;
-    }
-    
-    public Respuesta<ListaProyecto> buscarProyectosEnDesarrollo() {
-        try {
-            ListaProyecto listaProyectos = (ListaProyecto) sProyecto.ConsultaProyecto().getObjeto().getproyectos().stream()
-                .filter((proyecto) -> proyecto.getEstado().equals("En Desarrollo"));
-            return new Respuesta(listaProyectos);    
-        }
-        catch (Exception e) {
-            return new Respuesta(e);
-        }
     }
     
     public String Actualizar (Persona Persona)

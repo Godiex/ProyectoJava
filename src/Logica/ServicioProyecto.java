@@ -29,4 +29,23 @@ public class ServicioProyecto {
     {
        return archivoProyecto.ObtenerListaProyecto();
     }
+    
+    public Respuesta<ListaProyecto> ConsultarProyectosEnDesarrollo() {
+        try {
+            ListaProyecto listaProyectos = new ListaProyecto();
+            this.ConsultaProyecto().getObjeto().getproyectos().stream()
+                .filter((listaProyecto) -> listaProyecto.getEstado().equals("En Desarrollo")).forEach(proyecto -> {
+                    listaProyectos.getproyectos().add(proyecto);
+                });
+            Respuesta<ListaProyecto> respuesta = new Respuesta(listaProyectos);
+            if (respuesta.getObjeto().getproyectos().isEmpty()) {
+                respuesta.setMensaje("No existen proyectos registrados");
+                respuesta.setError(true);
+            }
+            return respuesta;
+        }
+        catch (Exception e) {
+            return new Respuesta(e);
+        }
+    }
 }
