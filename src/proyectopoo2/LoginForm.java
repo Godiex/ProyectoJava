@@ -10,10 +10,6 @@ import Clases.*;
 import java.awt.Frame;
 import javax.swing.JInternalFrame;
 
-/**
- *
- * @author spayd
- */
 public class LoginForm extends javax.swing.JFrame {
 
     ServicioUsuario sUsuario = new ServicioUsuario();
@@ -40,7 +36,6 @@ public class LoginForm extends javax.swing.JFrame {
         PfContreseña = new javax.swing.JPasswordField();
         BtnIngresar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        BtnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(535, 450));
@@ -70,16 +65,6 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(153, 255, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 20));
-
-        BtnSalir.setBackground(new java.awt.Color(44, 114, 61));
-        BtnSalir.setForeground(new java.awt.Color(44, 114, 61));
-        BtnSalir.setBorder(null);
-        BtnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSalirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BtnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 30, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -137,7 +122,6 @@ public class LoginForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnIngresar;
-    private javax.swing.JButton BtnSalir;
     private javax.swing.JPasswordField PfContreseña;
     private javax.swing.JTextField TfUsuario;
     private javax.swing.JLabel jLContraseña;

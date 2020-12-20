@@ -42,7 +42,7 @@ public class ServicioPersona {
             Persona PersonaAux = archivoPersona.Buscar(cedula);
             if (PersonaAux != null) {
                archivoPersona.Eliminar(cedula);
-            return "Persona borrado con exito";
+                return "Persona borrado con exito";
             }
             return "el Persona no se encuentra registrado";
         }
@@ -75,7 +75,7 @@ public class ServicioPersona {
         }
     }
     
-    public String Actualizar (Persona Persona )
+    public String Actualizar (Persona Persona)
     {
        try  
        {

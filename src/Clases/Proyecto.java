@@ -24,7 +24,6 @@ public class Proyecto implements Serializable
         this.estado = "En Desarrollo"; 
         this.CalcularFechaFinal();
     }                  
-
     public String CerrarProyecto ()
     {    
         if(LasTareasEstanTerminadas())

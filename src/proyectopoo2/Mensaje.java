@@ -20,7 +20,6 @@ public class Mensaje {
     public static void MostrarNotificacion( String msg) {
         JOptionPane.showMessageDialog(null, msg);
     }
-    
     public static boolean RespuestaDecision( String msg) {
         int respuesta = JOptionPane.showConfirmDialog(null, msg);
         if (respuesta == JOptionPane.YES_OPTION) {

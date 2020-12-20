@@ -6,6 +6,7 @@
 package proyectopoo2;
 
 import java.awt.Dimension;
+import java.awt.Frame;
 import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
     
@@ -33,6 +34,7 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
         btonRegistrarUser = new javax.swing.JButton();
         BtonRegistrarIng = new javax.swing.JButton();
         btonRegistrarAdministrador = new javax.swing.JButton();
+        BtnSalir = new javax.swing.JButton();
         btonGestionarIngeniero = new javax.swing.JButton();
         btonConsultarProyectos = new javax.swing.JButton();
         escritorio = new javax.swing.JDesktopPane();
@@ -93,6 +95,13 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
         });
         jPanel1.add(btonRegistrarAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 220, 30));
 
+        BtnSalir.setText("Salir");
+        BtnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 660, -1, -1));
         btonGestionarIngeniero.setBackground(new java.awt.Color(45, 64, 89));
         btonGestionarIngeniero.setFont(new java.awt.Font("Century", 1, 14)); // NOI18N
         btonGestionarIngeniero.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,9 +159,12 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btonRegistrarUserActionPerformed
 
     private void btonRegistrarAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btonRegistrarAdministradorActionPerformed
-        // TODO add your handling code here:
+        AbrirPanel(new RegistroUsuarioIngenieroForm());
     }//GEN-LAST:event_btonRegistrarAdministradorActionPerformed
 
+    private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
+        AbrirFormulario(new LoginForm());
+    }//GEN-LAST:event_BtnSalirActionPerformed
     private void btonGestionarIngenieroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btonGestionarIngenieroActionPerformed
         this.AbrirPanel(new GestionarIngeniero());
     }//GEN-LAST:event_btonGestionarIngenieroActionPerformed
@@ -162,6 +174,7 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btonConsultarProyectosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnSalir;
     private javax.swing.JButton BtonRegistrarIng;
     private javax.swing.JButton btonConsultarProyectos;
     private javax.swing.JButton btonGestionarIngeniero;
@@ -178,5 +191,10 @@ public class PrincipalAdminstrador extends javax.swing.JFrame {
         PrincipalAdminstrador.escritorio.removeAll();
         PrincipalAdminstrador.escritorio.add(formularioInterno);
         formularioInterno.setVisible(true);
+    }
+    public void AbrirFormulario(Frame formulario)
+    {
+        formulario.setVisible(true);
+        this.dispose();
     }
 }
