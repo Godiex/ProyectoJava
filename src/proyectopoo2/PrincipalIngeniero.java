@@ -5,13 +5,15 @@
  */
 package proyectopoo2;
 
+import Logica.ServicioPersona;
 import java.awt.Dimension;
+import java.awt.Frame;
 import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
     
 
 public class PrincipalIngeniero extends javax.swing.JFrame {
-    
+    ServicioPersona servicioPersona = new ServicioPersona();
     public PrincipalIngeniero() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -32,6 +34,7 @@ public class PrincipalIngeniero extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btonRegistrarUser = new javax.swing.JButton();
         BtonRegistrarIng = new javax.swing.JButton();
+        BtnSalir = new javax.swing.JButton();
         escritorio = new javax.swing.JDesktopPane();
 
         jButton4.setText("jButton4");
@@ -78,6 +81,14 @@ public class PrincipalIngeniero extends javax.swing.JFrame {
         });
         jPanel1.add(BtonRegistrarIng, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 30));
 
+        BtnSalir.setText("Salir");
+        BtnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 650, 60, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 710));
 
         escritorio.setPreferredSize(new java.awt.Dimension(1000, 500));
@@ -110,7 +121,13 @@ public class PrincipalIngeniero extends javax.swing.JFrame {
         AbrirPanel(new RegistroUsuarioAdministradorForm());
     }//GEN-LAST:event_btonRegistrarUserActionPerformed
 
+    private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
+        servicioPersona.EliminarIngeniero();
+        AbrirFormulario(new LoginForm());
+    }//GEN-LAST:event_BtnSalirActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnSalir;
     private javax.swing.JButton BtonRegistrarIng;
     private javax.swing.JButton btonRegistrarUser;
     public static javax.swing.JDesktopPane escritorio;
@@ -124,5 +141,11 @@ public class PrincipalIngeniero extends javax.swing.JFrame {
         PrincipalIngeniero.escritorio.removeAll();
         PrincipalIngeniero.escritorio.add(formularioInterno);
         formularioInterno.setVisible(true);
+    }
+    
+    public void AbrirFormulario(Frame formulario)
+    {
+        formulario.setVisible(true);
+        this.dispose();
     }
 }
