@@ -10,11 +10,13 @@ public class GestionarTareas extends javax.swing.JFrame {
     public Proyecto proyecto;
     DefaultTableModel modeloTablaTareas;
     DefaultTableModel modeloTablaIngenieros;
+    ServicioProyecto servicioProyecto;
     Tarea tarea;
 
     public GestionarTareas(Proyecto proyecto) {
         initComponents();
         this.proyecto = proyecto;
+        servicioProyecto = new ServicioProyecto();
         this.setLocationRelativeTo(null);
         this.CrearModeloDeTablaTarea();
         this.LlenarTablaTarea();
@@ -55,14 +57,17 @@ public class GestionarTareas extends javax.swing.JFrame {
         TaDescripcionTarea = new javax.swing.JTextArea();
         TfFase = new javax.swing.JTextField();
         TfTipo = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TaJustificacion = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
         BtnCerrarTarea = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelTitulo.setFont(new java.awt.Font("Century Gothic", 1, 30)); // NOI18N
-        jLabelTitulo.setText("Gestion Proyecto");
-        getContentPane().add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, -1));
+        jLabelTitulo.setText("Gestionar Tareas de un Proyecto");
+        getContentPane().add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1000, 10));
 
         TfFechaLimite.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
@@ -148,7 +153,7 @@ public class GestionarTareas extends javax.swing.JFrame {
                 BtnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 640, 160, 40));
+        getContentPane().add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 520, 160, 50));
 
         BtnSeleccionarTarea.setText("Seleccionar Tarea");
         BtnSeleccionarTarea.addActionListener(new java.awt.event.ActionListener() {
@@ -156,49 +161,65 @@ public class GestionarTareas extends javax.swing.JFrame {
                 BtnSeleccionarTareaActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnSeleccionarTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 160, 40));
+        getContentPane().add(BtnSeleccionarTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 270, 40));
 
         LbPropuesta2.setFont(new java.awt.Font("Century", 1, 20)); // NOI18N
         LbPropuesta2.setText("Tareas :");
-        getContentPane().add(LbPropuesta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
+        getContentPane().add(LbPropuesta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
 
         TfDuracionTarea.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
-        getContentPane().add(TfDuracionTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, 160, -1));
+        TfDuracionTarea.setEnabled(false);
+        getContentPane().add(TfDuracionTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 160, -1));
 
         LbTipoContrato2.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato2.setText("Descripcion :");
-        getContentPane().add(LbTipoContrato2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, 139, -1));
+        getContentPane().add(LbTipoContrato2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 139, -1));
 
         TfNombreTarea.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
-        getContentPane().add(TfNombreTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 160, -1));
+        TfNombreTarea.setEnabled(false);
+        getContentPane().add(TfNombreTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 160, -1));
 
         LbTipoContrato9.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato9.setText("Duracion de la Tarea :");
-        getContentPane().add(LbTipoContrato9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 174, -1));
+        getContentPane().add(LbTipoContrato9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 174, -1));
 
         LbTipoContrato10.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato10.setText("Fase del Proyecto :");
-        getContentPane().add(LbTipoContrato10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 139, -1));
+        getContentPane().add(LbTipoContrato10, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 450, 139, -1));
 
         LbTipoContrato11.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato11.setText("Nombre Tarea :");
-        getContentPane().add(LbTipoContrato11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 130, -1));
+        getContentPane().add(LbTipoContrato11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 130, -1));
 
         LbTipoContrato4.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         LbTipoContrato4.setText("Tipo de Tarea :");
-        getContentPane().add(LbTipoContrato4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 139, -1));
+        getContentPane().add(LbTipoContrato4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 450, 139, -1));
 
         TaDescripcionTarea.setColumns(20);
         TaDescripcionTarea.setRows(5);
+        TaDescripcionTarea.setEnabled(false);
         jScrollPane2.setViewportView(TaDescripcionTarea);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, 380, 70));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 270, 50));
 
         TfFase.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
-        getContentPane().add(TfFase, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 550, 160, -1));
+        TfFase.setEnabled(false);
+        getContentPane().add(TfFase, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 470, 160, -1));
 
         TfTipo.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
-        getContentPane().add(TfTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 160, -1));
+        TfTipo.setEnabled(false);
+        getContentPane().add(TfTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, 160, -1));
+
+        TaJustificacion.setColumns(20);
+        TaJustificacion.setRows(5);
+        TaJustificacion.setEnabled(false);
+        jScrollPane3.setViewportView(TaJustificacion);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 320, 50));
+
+        jLabel1.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
+        jLabel1.setText("Justifique el retraso de la tarea:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, -1, -1));
 
         BtnCerrarTarea.setText("Cerrar Tarea");
         BtnCerrarTarea.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +227,7 @@ public class GestionarTareas extends javax.swing.JFrame {
                 BtnCerrarTareaActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnCerrarTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 150, 40));
+        getContentPane().add(BtnCerrarTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, 160, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -232,7 +253,14 @@ public class GestionarTareas extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnSeleccionarTareaActionPerformed
 
     private void BtnCerrarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarTareaActionPerformed
-        // TODO add your handling code here:
+        if (this.tarea != null) {
+            if (this.tarea.getEstado().equals("En Desarrollo Con Retraso") && !"".equals(TaJustificacion.getText())) {
+                if (Mensaje.RespuestaDecision("¿Esta seguro que desea cerrar la tarea?"))
+                    this.CerrarTarea();
+            }
+            else Mensaje.MostrarNotificacion("Advertencia, debe justificar el retraso antes de cerrar la tarea");
+        }
+        else Mensaje.MostrarNotificacion("Advertencia, seleccione primero una tarea");
     }//GEN-LAST:event_BtnCerrarTareaActionPerformed
 
 
@@ -255,6 +283,7 @@ public class GestionarTareas extends javax.swing.JFrame {
     private javax.swing.JLabel LbTipoContrato8;
     private javax.swing.JLabel LbTipoContrato9;
     private javax.swing.JTextArea TaDescripcionTarea;
+    private javax.swing.JTextArea TaJustificacion;
     private javax.swing.JTextField TfDuracionTarea;
     private javax.swing.JTextField TfEstado;
     private javax.swing.JTextField TfFase;
@@ -264,9 +293,11 @@ public class GestionarTareas extends javax.swing.JFrame {
     private javax.swing.JTextField TfNombreTarea;
     private javax.swing.JTextField TfTipo;
     private javax.swing.JTable Ttarea;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 
@@ -280,6 +311,7 @@ public class GestionarTareas extends javax.swing.JFrame {
 
     public void CrearModeloDeTablaTarea() {
         modeloTablaTareas = new DefaultTableModel();
+        modeloTablaTareas.addColumn("ID");
         modeloTablaTareas.addColumn("nombre");
         modeloTablaTareas.addColumn("tipo");
         modeloTablaTareas.addColumn("Fase");
@@ -293,7 +325,8 @@ public class GestionarTareas extends javax.swing.JFrame {
     public void LlenarTablaTarea() {
         if (proyecto.getTareas().size() != 0) {
             for (Tarea tarea : proyecto.getTareas()) {
-                tarea.ActualizarEstadoTarea();
+                if (!"Finalizado Con Retraso".equals(tarea.getEstado()) && !"Finalizado".equals(tarea.getEstado()))
+                    tarea.ActualizarEstadoTarea();
                 InsertarFila(tarea);
             }
         }
@@ -318,7 +351,7 @@ public class GestionarTareas extends javax.swing.JFrame {
             if (Ttarea.getSelectedRows().length == 1) {
                 int idTarea = Integer.parseInt(Ttarea.getValueAt(filaSeleccionada, 0).toString());
                 this.tarea = proyecto.BuscarTarea(idTarea);
-                return this.tarea;
+                this.ValidarEstado();
             } else {
                 Mensaje.MostrarNotificacion("error seleccione solo una fila");
             }
@@ -326,6 +359,13 @@ public class GestionarTareas extends javax.swing.JFrame {
             Mensaje.MostrarNotificacion("error seleccione una fila");
         }
         return null;
+    }
+    
+    public void ValidarEstado() {
+        if (this.tarea.getEstado().equals("En Desarrollo Con Retraso")) {
+            TaJustificacion.setEnabled(true);
+            Mensaje.MostrarNotificacion("A continuación, justifique el retraso de la tarea");
+        }
     }
 
     public void MapearTarea() {
@@ -336,5 +376,12 @@ public class GestionarTareas extends javax.swing.JFrame {
         TfTipo.setText(tarea.getTipoTarea());
         TaDescripcionTarea.setText(tarea.getDescripcion());
 
+    }
+    
+    public void CerrarTarea() {
+        this.tarea.CerrarTarea();
+        this.proyecto.Actualizar(tarea);
+        String mensaje = this.servicioProyecto.Actualizar(this.proyecto);
+        Mensaje.MostrarNotificacion(mensaje);
     }
 }

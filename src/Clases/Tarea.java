@@ -48,7 +48,7 @@ public abstract class Tarea implements Serializable
     {    
         if(EstaRetrasado())
         {
-            this.estado = "En Desarrollo Con restraso";
+            this.estado = "En Desarrollo Con Retraso";
         }
     }
 
